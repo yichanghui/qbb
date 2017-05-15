@@ -1,13 +1,12 @@
 package com.hiveview.interceptor;
 
 import com.hiveview.entity.Member;
+import com.hiveview.util.CheckLoginUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 
 public class CheckLoginInterceptor implements HandlerInterceptor{
@@ -17,7 +16,7 @@ public class CheckLoginInterceptor implements HandlerInterceptor{
 		@Override
 		public boolean preHandle(HttpServletRequest request,HttpServletResponse response, Object handler) throws Exception {
 			String requestUrl = request.getServletPath();
-			if(!requestUrl.startsWith("/member"))
+			if(!CheckLoginUtil.isFilter(requestUrl))
 				return true;
 			Object usesession =request.getSession().getAttribute("currentUser");
 			if(usesession != null){
@@ -50,4 +49,5 @@ public class CheckLoginInterceptor implements HandlerInterceptor{
 			
 		}
 		public static String [] noInterceptor_url = {"toMember.html"};
+
 }
