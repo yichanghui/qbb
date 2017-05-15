@@ -14,7 +14,7 @@ public class CheckLoginUtil {
     /**
      * 需要过滤的 Url前缀
      */
-    private static final List<String> filterUrlPrefix = Arrays.asList("member","myTest");
+    private static final List<String> filterUrlPrefix = Arrays.asList("/member","/myTest");
 
     /**
      * 是否需要登录过滤
