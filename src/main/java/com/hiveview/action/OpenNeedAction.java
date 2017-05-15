@@ -4,10 +4,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.StringUtil;
 import com.google.common.collect.Maps;
-import com.hiveview.entity.Member;
-import com.hiveview.entity.Need;
-import com.hiveview.entity.Paging;
-import com.hiveview.entity.UserNeed;
+import com.hiveview.entity.*;
+import com.hiveview.service.IMemberRecommendService;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.INeedService;
 import com.hiveview.util.Data;
@@ -32,7 +30,8 @@ import java.util.Map;
 @RequestMapping("/need")
 
 public class OpenNeedAction extends BaseController{
-
+    @Autowired
+    private IMemberRecommendService memberRecommendService;
     @Autowired
     private INeedService needService;
     @Autowired
@@ -83,6 +82,36 @@ public class OpenNeedAction extends BaseController{
         mav.setViewName("openNeed/paging");
         return mav;
     }
+    @RequestMapping(value="/page1")
+    public ModelAndView page1(HttpServletRequest request, ModelAndView mav) {
+        Paging paging = super.getPaging(request);
+        Need need = new Need();
+        String keyword = request.getParameter("keyword");
+        if (StringUtil.isNotEmpty(keyword)) {
+            need.setTitle(keyword);
+        }
+        String areaCode = request.getParameter("areaCode");
+        if (StringUtil.isNotEmpty(areaCode)) {
+            need.setAreaCode(areaCode);
+        }
+        String classCode = request.getParameter("classCode");
+        if (StringUtil.isNotEmpty(classCode)) {
+            need.setClassCode(classCode);
+        }
+        need.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
+        Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
+        long memberId = super.getMemberId(request);
+        if (memberId > 0) {
+            need.setOpenShow(true);
+            need.setMemberId(memberId);
+        }
+        List<Need> needs =  needService.getOpendNeedPage(need);
+        paging.setTotalPages(page.getPages());
+        mav.getModel().put("paging",paging);
+        mav.getModel().put("needs",needs);
+        mav.setViewName("openNeed/paging123");
+        return mav;
+    }
 
     @RequestMapping(value="/pageIndex")
     public ModelAndView pageIndex(HttpServletRequest request, ModelAndView mav) {
@@ -131,6 +160,9 @@ public class OpenNeedAction extends BaseController{
         String view ="openNeed/detail";
         needService.addHitsByNid(needId);
         Need need = needService.getNeedDetail(needId);
+        MemberRecommend memberRecommend1= new MemberRecommend();
+        List<MemberRecommend> memberRecommends =  memberRecommendService.getMemberRecommendList(memberRecommend1);
+
         Integer chargeType = need.getChargeType();
         if (chargeType != null && chargeType == StatusUtil.COLLECT_FEE.getVal()) {
             Long memberId =super.getMemberId(request);
@@ -141,6 +173,9 @@ public class OpenNeedAction extends BaseController{
             }
         }
         mav.getModel().put("need", need);
+        mav.getModel().put("memberRecommends",memberRecommends);
+
+
         mav.setViewName(view);
         return mav;
     }

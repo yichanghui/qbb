@@ -451,6 +451,7 @@
             margin-top: 28px;
         }
         #needDataMsgPerson{margin-left: 10px;}
+        #needDataMsgAdvier{margin-left: 10px;}
         .offerlistclss{margin-top:10px;margin-left: 10px;}
         .offerlistclss span{padding:3px 5px; cursor: pointer; margin-top: 10px; margin-right:5px;background-color: #004b92;color:#FFF;}
         .liuyan{    position: absolute;

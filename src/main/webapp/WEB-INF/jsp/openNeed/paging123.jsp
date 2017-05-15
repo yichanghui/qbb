@@ -4,32 +4,31 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<table class="layui-table" lay-skin="line">
-    <colgroup>
-        <col width="150">
-        <col width="100">
-        <col width="80">
-        <col width="120">
-        <col width="200">
-        <col width="100">
-    </colgroup>
-    <thead>
-    <tr>
-        <td>需求名称</td>
-        <td>类型</td>
-        <td>联系人</td><td>联系电话</td>
-        <td>地区</td>
-        <td>发布日期</td>
-    </tr>
-    </thead>
-    <tbody>
+<ul >
 
-    <c:forEach items="${needs}" var="need" >
-        <tr>
-            <td><a name="lookNeed" href="javascript:void(0);" needId="${need.id}" >${fn:substring(need.title,0,7)}</a></td>
-            <td> ${fn:substring(need.className,0,4)}</td>
-            <td> ${fn:substring(need.member.name,0,4)}</td>
-            <td   <c:if test="${need.memberViewNeedId != null}"> style="color: red;" </c:if>>
+
+        <li>需求名称</li>
+        <li>类型</li>
+        <li>联系人</li>
+        <li>联系电话</li>
+        <li>地区</li>
+        <li>发布日期</li>
+</ul>
+
+
+
+    <c:forEach items="${needs}" var="need"  >
+
+        <ul>
+            <li>${fn:substring(need.title,0,8)}</li>
+            <li> <c:if test="${need.className !=null }">
+                ${fn:substring(need.className,0,4)}
+            </c:if><c:if test="${need.className ==null }">xxxx</c:if>
+
+
+            </li>
+            <li>${need.member.name}</li>
+            <li   <c:if test="${need.memberViewNeedId != null}"> style="color: red;" </c:if>>
                 <c:if test="${need.chargeType == 9}">
                     <c:if test="${need.memberViewNeedId != null}">
                         ${need.needMobile}[已查看]
@@ -41,20 +40,22 @@
                 <c:if test="${need.chargeType == 8}">
                       ${need.needMobile}
                 </c:if>
-            </td>
+            </li>
+            <li> <c:if test="${need.areaFullName !=null }">
 
-            <td>${fn:substring(need.areaFullName,0,9)}</td>
-            <td><fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
-        </tr>
+                ${fn:substring(need.areaFullName,0,9)}
+    </c:if><c:if test="${need.areaFullName ==null }">xxxxxxx</c:if></li>
+            <li><fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></li>
+        </ul>
 
     </c:forEach>
     <c:if test="${empty needs}">
-        <tr>
-            <td colspan="5" style="text-align: center;">没有搜索到您的需求！</td>
-        </tr>
+        <ul>
+            <li colspan="5" style="text-align: center;">没有搜索到您的需求！</li>
+        </ul>
     </c:if>
-    </tbody>
-</table>
+
+
 
    <input type="hidden" id="totalPages" value="${paging.totalPages}"/>
    <input type="hidden" id="currentPage" value="${paging.currentPage}"/>
