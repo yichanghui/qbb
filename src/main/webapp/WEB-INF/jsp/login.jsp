@@ -33,6 +33,7 @@
         <div class="login_left">
             <div class="login_left_content">
                 <form class="layui-form" action="" id="loginForm">
+                    <input type="hidden" name="fromUrl" value="${fromUrl}">
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
@@ -94,7 +95,11 @@
                 success: function(data){
                     if(data.flag) {
                         setTimeout(function () {
-                            location.href = "/member/index.html";
+                            var href = "/member/index.html";
+                            if(data.fromUrl) {
+                                href = data.fromUrl;
+                            }
+                            location.href = href;
                         }, 1000);
                     }else {
                         layer.msg(data.msg);
