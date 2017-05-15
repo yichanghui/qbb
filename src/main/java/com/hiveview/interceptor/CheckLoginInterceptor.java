@@ -32,7 +32,13 @@ public class CheckLoginInterceptor implements HandlerInterceptor{
 				}
 				return true;
 			}
-			response.sendRedirect(request.getContextPath() + LoginUrl);
+			String url;
+			if (!requestUrl.equals(LoginUrl)) {
+				url = LoginUrl + "?fromUrl=" + requestUrl;
+			} else {
+				url = LoginUrl;
+			}
+			response.sendRedirect(request.getContextPath() + url);
 		    return false;  
 		}
 		@Override
