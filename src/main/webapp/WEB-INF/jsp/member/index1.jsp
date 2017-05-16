@@ -5,6 +5,35 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName();
 %>
+<style>
+	.file {
+		position: relative;
+		display: inline-block;
+		background: #D0EEFF;
+		border: 1px solid #99D3F5;
+		border-radius: 4px;
+		padding: 4px 12px;
+		overflow: hidden;
+		color: #1E88C7;
+		text-decoration: none;
+		text-indent: 0;
+		line-height: 20px;
+	}
+	.file input {
+		position: absolute;
+		font-size: 100px;
+		right: 0;
+		top: 0;
+		opacity: 0;
+	}
+	.file:hover {
+		background: #AADFFD;
+		border-color: #78C3F3;
+		color: #004974;
+		text-decoration: none;
+	}
+
+</style>
 <html>
 	<head>
 		<base href="<%=basePath%>">
@@ -56,7 +85,8 @@
 						<a href="management.html">推广管理</a>
 					</li>
 					<li >
-						<a href="store.html">我的店铺</a>
+						<a href="member/store.html">我的店铺</a>
+
 					</li>
 					<li>
 						<a href="personal data.html">我的资料</a>
@@ -73,13 +103,32 @@
 			<div class="details">
 				<div class="data">
 					<div class="tuxiang">
+						<form class="layui-form" action="" id="memberInfo">
 						<img src="${member.headPortrait}" />
-						<p><button>修改头像</button></p>
+						<p>
+						<%--	<input type="file" name="file"  id="uploadHeadPortrait">
+						<button class="layui-btn" lay-submit="" lay-filter="demo1">修改头像</button>--%>
+
+				</p>
+
+						</form>
 					</div>
 					<div class="personal">
 						<p>${member.name}</p>
 						<p>所属公司： <span>${member.companyName}</span> <button>[关联]</button></p>
-						<p>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型： <span>金融服务</span></p>
+						<p>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型： <span>
+   						<c:if test="${member.adviserType.equals('1-')}">
+							贷款顾问
+						</c:if>
+						<c:if test="${member.adviserType.equals('2-')}">
+							金融顾问
+						</c:if>
+						<c:if test="${member.adviserType.equals('3-')}">
+							法律顾问
+						</c:if>
+
+
+						</span></p>
 						<p>个人介绍： <span>${member.description}</span></p>
 						<p><button>[修改]</button></p>
 					</div>
@@ -220,5 +269,7 @@
         //运行
         paging();
     });
+
 </script>
+
 </html>

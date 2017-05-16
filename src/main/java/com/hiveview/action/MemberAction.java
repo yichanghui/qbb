@@ -56,6 +56,28 @@ public class MemberAction extends BaseController{
 		mav.setViewName("member/index1");
 		return mav;
 	}
+	@RequestMapping(value="/store")
+	public ModelAndView memberStore(HttpServletRequest request1,ModelAndView mav1) {
+		request1.setAttribute("nav","center");
+//		List<Member> counselors = memberService.getRecommendCounselorList();
+		Member member = new Member();
+		member.setId(super.getMemberId(request1));
+		member =  memberService.getMemberInfo(member);
+		if (member != null) {
+			Long companyId = member.getCompanyId();
+			if (Optional.ofNullable(companyId).isPresent()) {
+				member.setCompanyName(companyService.getCompanyNameById(companyId));
+			}
+			if(null!=member.getDescription()&&member.getDescription().length()>200){
+				member.setDescription(member.getDescription().substring(0,200)+"...");
+			}
+		}
+
+		mav1.getModel().put("member", member);
+//		mav.getModel().put("counselors", counselors);
+		mav1.setViewName("member/store");
+		return mav1;
+	}
 
 	@RequestMapping(value="/toMember")
 	public String selectMemberType(HttpServletRequest request) {
