@@ -11,64 +11,16 @@ String basePath = request.getScheme() + "://"
 	<head>
 		<meta charset="UTF-8">
 		<title>我的店铺</title>
-		<link rel="shortcut icon" href="../images/icon/qibaba.icon">
-		<link rel="stylesheet" type="text/css" href="../css/base.css" />
-		<link rel="stylesheet" type="text/css" href="../css/layui.css" />
-		<link rel="stylesheet" type="text/css" href="../css/public.css" />
-		<link rel="stylesheet" type="text/css" href="../css/Store.css" />
+		<jsp:include page="../common/css_c.jsp"></jsp:include>
+		<link rel="stylesheet" type="text/css" href="../css/store.css" />
 		<script type="text/javascript" src="../js/layui.js"></script>
 		<script type="text/javascript" src="../js/scrooll.js"></script>
 		<script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
-		<link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
 	</head>
 
 	<body>
 		<!--头部-->
-		<div class="content">
-			<div class="logo-box">
-				<a href="http://qbb.open580.com/product/toSearch.html"><img src="../images/logo_h.png"></a>
-			</div>
-			<div class="box_list">
-				<ul>
-					<li>
-						<a href="">首页</a>丨</li>
-					<li>
-						<a href="">${member.mobile}</a>丨</li>
-					<li>
-						<a href="">消息</a>丨</li>
-					<li>
-						<a href="">服务中心</a>丨</li>
-					<li>
-						<a href="">退出</a>
-					</li>
-				</ul>
-			</div>
-			<!--box_list-->
-			<div class="clear"></div>
-		</div>
-		<!--content-->
-		<div class="xian">
-			<div class="content">
-				<ul id="menu">
-					<li>
-						<a href="index.html.html">首页</a>
-					</li>
-					<li>
-						<a href="management.html">推广管理</a>
-					</li>
-					<li class="hover">
-						<a href="member/store.html">我的店铺</a>
-					</li>
-					<li>
-						<a href="personal data.html">我的资料</a>
-					</li>
-					<li>
-						<a href="cooperation.html">企巴巴同业合作</a>
-					</li>
-					<div class="clear"></div>
-				</ul>
-			</div>
-		</div>
+		<jsp:include page="../common/top_c2.jsp"></jsp:include>
 		<!--xian-->
 		<div class="content">
 			<div class="list">

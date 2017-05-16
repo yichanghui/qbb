@@ -36,7 +36,7 @@ public class MemberAction extends BaseController{
 	 */
 	@RequestMapping(value="/index")
 	public ModelAndView memberIndex(HttpServletRequest request,ModelAndView mav) {
-		request.setAttribute("nav","center");
+		request.setAttribute("index","hover");
 //		List<Member> counselors = memberService.getRecommendCounselorList();
 		Member member = new Member();
 		member.setId(super.getMemberId(request));
@@ -57,11 +57,11 @@ public class MemberAction extends BaseController{
 		return mav;
 	}
 	@RequestMapping(value="/store")
-	public ModelAndView memberStore(HttpServletRequest request1,ModelAndView mav1) {
-		request1.setAttribute("nav","center");
+	public ModelAndView memberStore(HttpServletRequest request,ModelAndView mav1) {
+        request.setAttribute("store","hover");
 //		List<Member> counselors = memberService.getRecommendCounselorList();
 		Member member = new Member();
-		member.setId(super.getMemberId(request1));
+		member.setId(super.getMemberId(request));
 		member =  memberService.getMemberInfo(member);
 		if (member != null) {
 			Long companyId = member.getCompanyId();
@@ -190,5 +190,23 @@ public class MemberAction extends BaseController{
 		long memberId = super.getMemberId(request);
 		return memberService.getInviteCodeById(memberId);
 	}
+
+    @RequestMapping(value="/toCooperation")
+    public String toCooperation(HttpServletRequest request) {
+        request.setAttribute("cooperation","hover");
+        return "company/cooperation";
+    }
+
+    @RequestMapping(value="/toManagement")
+    public String toManagement(HttpServletRequest request) {
+        request.setAttribute("management","hover");
+        return "company/management";
+    }
+
+    @RequestMapping(value="/toPersonalData")
+    public String toPersonalData(HttpServletRequest request) {
+        request.setAttribute("personaldata","hover");
+        return "member/personal_data";
+    }
 
 }

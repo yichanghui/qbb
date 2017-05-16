@@ -832,7 +832,7 @@
         <ul><li>1</li><li>2</li><li>3</li></ul>
     </div>
     <div class="bd" id="flexslider">
-        <ul ">
+        <ul>
             <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/1.jpg" /></a></li>
             <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/2.jpg" /></a></li>
             <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/3.jpg" /></a></li>
