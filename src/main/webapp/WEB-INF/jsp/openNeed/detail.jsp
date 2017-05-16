@@ -166,13 +166,16 @@
 
         $(function () {
         var keyword = "${keyword}";
+
         $("#keyword").val(keyword);
         var searchType = $("a[name='searchType']");
         searchType.removeClass("selectType");
         searchType.eq(1).addClass("selectType");
 
         layui.use(['laypage', 'layer'], function(){
+
             var laypage = layui.laypage
+
                 ,layer = layui.layer;
             //以下将以jquery.ajax为例，演示一个异步分页
             var pageSize = 10; //每页显示条数

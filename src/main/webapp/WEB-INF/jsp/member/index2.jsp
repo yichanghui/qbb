@@ -22,6 +22,7 @@
 </head>
 <body>
 <input type="hidden" id="qbbPath" value="<%=qbbPath%>">
+<%--<jsp:include page="../common/top_Store.jsp"></jsp:include>--%>
 <jsp:include page="../common/top_c.jsp"></jsp:include>
 <jsp:include page="../common/nav_c.jsp"></jsp:include>
 <div id="container">
@@ -31,11 +32,11 @@
         <div class="c_right">
 
             <c:if test="${member.type==0}">
-                <jsp:include page="person_center.jsp"></jsp:include>
+                <jsp:include page="person_center1.jsp"></jsp:include>
             </c:if>
 
             <c:if test="${member.type==1}">
-                <jsp:include page="company_center.jsp"></jsp:include>
+                <jsp:include page="company_center1.jsp"></jsp:include>
             </c:if>
         </div>
         <div class="clear"></div>
