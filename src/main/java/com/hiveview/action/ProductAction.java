@@ -3,9 +3,11 @@ package com.hiveview.action;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hiveview.entity.Category;
+import com.hiveview.entity.Member;
 import com.hiveview.entity.Paging;
 import com.hiveview.entity.Product;
 import com.hiveview.service.ICategoryService;
+import com.hiveview.service.IMemberService;
 import com.hiveview.service.IProductService;
 import com.hiveview.util.LevelUtil;
 import utils.IssueType;
@@ -25,7 +27,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/member/product")
 public class ProductAction extends BaseController{
-
+	@Autowired
+	private IMemberService memberService;
 	@Autowired
 	private ICategoryService categoryService;
 
@@ -40,12 +43,16 @@ public class ProductAction extends BaseController{
 	}
 	@RequestMapping(value="/page")
 	public ModelAndView page(HttpServletRequest request, ModelAndView mav) {
+		Member member = new Member();
+		member.setId(super.getMemberId(request));
+		member =  memberService.getMemberInfo(member);
 		Paging paging = super.getPaging(request);
 		Product product = new Product();
 		product.setMemberId(super.getMemberId(request));
 		Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
 		List<Product> products =  productService.getProductPage(product);
 		paging.setTotalPages(page.getPages());
+		mav.getModel().put("member", member);
 		mav.getModel().put("paging",paging);
 		mav.getModel().put("products",products);
 		mav.setViewName("product/paging");

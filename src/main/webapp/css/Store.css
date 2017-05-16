@@ -1,0 +1,128 @@
+.user {
+    background: url(../images/user_bg1.jpg) no-repeat;
+    float: left;
+    width: 930px;
+    margin: 15px 0 0 8px;
+    /* background: #b2becc; */
+    height: 260px;
+    border-radius: 2px;
+}
+.user_left .img_box p{
+	padding: 30px 36px;
+}
+.user_left .img_box button{
+	color: #63bcde;;
+	font-size: 14px;
+	background: none;
+}
+.user_right {
+    float: left;
+    width: 460px;
+    padding: 45px 30px 0 10px;
+    /*border: 1px solid darkgoldenrod;*/
+}
+.user_right p{
+	padding-bottom: 25px;
+	padding-left: 50px;
+}
+.user_right p span{
+	color: #52a0c4;
+}
+.user_right p:nth-of-type(4) span{
+	line-height: 20px;
+	color: #000000;
+}
+.user_right p button{
+	margin-left: 10px;
+	padding:0 3px;
+	background: #2486b5;
+	color: #FFF;
+	border-radius: 3px;
+}
+
+.product,.form{
+	margin-left: 8px;
+	float: left;
+	width: 930px;
+	height: 680px;
+	border-radius: 2px;
+	border: 1px solid #E3E3E3;
+}			
+.product ul{
+	height: 105px;
+	border-bottom: 1px solid #dfdfdf;
+}
+.product ul:nth-of-type(1){
+	height: 42px;
+	line-height: 42px;
+	color: #FFF;
+	background: #2486b5;
+}
+.product ul:nth-of-type(1) li{
+	color: #fff;
+	line-height: 40px;
+}
+.product ul li{
+	color: #333333;
+	text-align: center;
+	line-height: 100px;
+	width: 130px;
+	float: left;
+	padding-left: 20px;
+}
+.product ul li img{
+	width: 100px;
+	height: 100px;
+}
+.product ul li button{
+	color: #333333;
+	background: none;
+}
+
+/*下一页*/
+.pane {
+    width: 405px;
+   	margin: 0 45%;;
+    padding-top: 30px;
+}
+.pane span {
+	color: #c5c5c5;
+    cursor: pointer;
+    text-align: center;
+    margin: 7px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #2486b5;
+}
+.pane button{
+	margin: 0 10px;
+	padding: 5px 10px;
+	color: #fff;
+	background: #2c88bb;
+}
+.pane span:hover{
+	color: #fff;
+	background: #2486B5;
+}
+
+
+
+/*personal data*/
+.form ul input{
+	width: 50px;
+	height: 30px;
+	border: 1px solid red;
+}
+.form p	{
+	font-size: 14px;
+	border: 1px dashed red;
+	color: #2e2e2e;
+	letter-spacing: 2px;
+	font-weight: bold;
+	height: 65px;
+	line-height: 65px;
+	width: 90%;
+	margin: 0 auto;
+}
