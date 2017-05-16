@@ -171,9 +171,9 @@
         var searchType = $("a[name='searchType']");
         searchType.removeClass("selectType");
         searchType.eq(1).addClass("selectType");
-            alert("123");
+
         layui.use(['laypage', 'layer'], function(){
-            alert("456");
+
             var laypage = layui.laypage
 
                 ,layer = layui.layer;
