@@ -13,11 +13,10 @@
 		<title>首页</title>
 		<link rel="shortcut icon" href="../images/icon/qibaba.icon">
 		<link rel="stylesheet" type="text/css" href="../css/base.css" />
-		<link rel="stylesheet" type="text/css" href="../css/layui.css" />
 		<link rel="stylesheet" type="text/css" href="../css/public.css" />
 		<link rel="stylesheet" type="text/css" href="../css/Home page.css" />
-		<link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
-		<script type="text/javascript" src="../js/layui.js"></script>
+		<link rel="stylesheet" href="../plugins/layui/css/layui.css"  media="all">
+
 		<script type="text/javascript" src="../js/scrooll.js"></script>
 		<script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
 	</head>
@@ -200,9 +199,9 @@
         var searchType = $("a[name='searchType']");
         searchType.removeClass("selectType");
         searchType.eq(1).addClass("selectType");
-
+			alert("123");
         layui.use(['laypage', 'layer'], function(){
-
+			alert("456");
             var laypage = layui.laypage
                 ,layer = layui.layer;
             //以下将以jquery.ajax为例，演示一个异步分页
