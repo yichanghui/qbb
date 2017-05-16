@@ -11,11 +11,12 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<title>首页</title>
+		<title>企巴巴-一站式商业服务平台</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="shortcut icon" href="../images/icon/qibaba.icon">
-		<link rel="stylesheet" type="text/css" href="../css/base.css" />
 		<link rel="stylesheet" type="text/css" href="../css/public.css" />
 		<link rel="stylesheet" type="text/css" href="../css/Home page.css" />
-		<link rel="stylesheet" href="../plugins/layui/css/layui.css"  media="all">
+		<link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
 
 		<script type="text/javascript" src="../js/scrooll.js"></script>
 		<script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
@@ -31,7 +32,7 @@
 					<li>
 						<a href="">首页</a>丨</li>
 					<li>
-						<a href="">13114171314</a>丨</li>
+						<a href="">${member.mobile}</a>丨</li>
 					<li>
 						<a href="">消息</a>丨</li>
 					<li>
@@ -118,7 +119,7 @@
 			</div>
 			<div class="tab_left">
 				<h1 style="padding-bottom: 15px">需求推荐</h1>
-				<div class="layui-form" id="dataMsg" >
+				<div class="layui-form" id="dataMsg">
 				</div>
 				<div id="pager"></div>
 
@@ -138,15 +139,7 @@
 			</div>
 			<div class="clear"></div>
 
-			<div class="pane">
-				<button>下一页</button>
-				<span>1</span>
-				<span>2</span>
-				<span>3</span>
-				<span>...</span>
-				<span>10</span>
-				<button>上一页</button>
-			</div>
+
 		</div><!--content-->
 
 		<!--页脚-->
@@ -190,77 +183,42 @@
 		</div>
 		<!--bottomCss-->
 	</body>
+	<script src="/plugins/layui/layui.js" charset="utf-8"></script>
 <script>
-    $(function () {
+    layui.use(['laypage', 'layer'], function(){
 
-        var keyword = "${keyword}";
-
-        $("#keyword").val(keyword);
-        var searchType = $("a[name='searchType']");
-        searchType.removeClass("selectType");
-        searchType.eq(1).addClass("selectType");
-			alert("123");
-        layui.use(['laypage', 'layer'], function(){
-			alert("456");
-            var laypage = layui.laypage
-                ,layer = layui.layer;
-            //以下将以jquery.ajax为例，演示一个异步分页
-            var pageSize = 10; //每页显示条数
-
-            function paging(curr){
-                $.ajax({
-                    type: "POST",
-                    url: "/need/page1.html",
-                    data: {
-                        keyword:$("#keyword").val(),
-                        areaCode:$("#areaVal").val(),
-                        classCode:$("#categoryVal").val(),
-                        currentPage :curr || 1,
-                        pageSize : pageSize
-                    },
-                    success: function(data){
-                        $("#dataMsg").html(data);
-                        var totalPages = $("#totalPages").val();
-                        //显示分页
-                        laypage({
-                            cont: 'pager', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
-                            pages: totalPages, //通过后台拿到的总页数
-                            curr: curr || 1, //当前页
-                            groups: 5 ,//连续显示分页数
-                            jump: function(obj, first){ //触发分页后的回调
-                                if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
-                                    paging(obj.curr);
-                                }
+        var laypage = layui.laypage
+            ,layer = layui.layer;
+        //以下将以jquery.ajax为例，演示一个异步分页
+        var pageSize = 5;
+        function paging(curr){
+            $.ajax({
+                type: "POST",
+                url: "/member/need/memberNeedPage.html",
+                data: {
+                    currentPage :curr || 1,
+                    pageSize : pageSize
+                },
+                success: function(data){
+                    $("#dataMsg").html(data);
+                    var totalPages = $("#totalPages").val();
+                    //显示分页
+                    laypage({
+                        cont: 'pager', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+                        pages: totalPages, //通过后台拿到的总页数
+                        curr: curr || 1, //当前页
+                        groups: 5 ,//连续显示分页数
+                        jump: function(obj, first){ //触发分页后的回调
+                            if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
+                                paging(obj.curr);
                             }
-                        });
-                    }
-                });
-            };
-            //运行
-            paging();
-            function selectStyle(thisObj) {
-                thisObj.parent().parent().find("a").removeClass("allSelect");
-                thisObj.addClass("allSelect");
-            }
-            $("#categorySearch a").click(function () {
-                var thisObj = $(this);
-                selectStyle(thisObj);
-                $("#categoryVal").val(thisObj.attr("code"));
-                paging();
+                        }
+                    });
+                }
             });
-
-            $("#areaSearch a").click(function () {
-                var thisObj = $(this);
-                selectStyle(thisObj);
-                $("#areaVal").val(thisObj.attr("code"));
-                paging();
-            });
-
-
-        });
-
+        };
+        //运行
+        paging();
     });
-
-
 </script>
 </html>
