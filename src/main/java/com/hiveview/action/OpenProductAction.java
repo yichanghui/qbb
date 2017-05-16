@@ -93,6 +93,8 @@ public class OpenProductAction extends BaseController{
     public ModelAndView detail(ModelAndView mav,@PathVariable("productId") long productId) {
 
         Product product = productService.getProductDetail(productId);
+        MemberRecommend memberRecommend1= new MemberRecommend();
+
 
         mav.getModel().put("product", product);
         mav.setViewName("openProduct/detail");

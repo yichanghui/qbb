@@ -14,8 +14,8 @@
     <style>
         .product_in{margin-bottom: 15px;}
         .pro_img{float: left;}
-        .pro_img img{width:430px;}
-        .pro_intro{float: left;margin-left:15px;width:725px;}
+        .pro_img img{width:300px;}
+        .pro_intro{float: left;margin-left:50px;width:725px;}
         .pro_title{height: 30px;line-height: 30px; font: 700 16px Arial,"microsoft yahei";
             color: #666;padding-top: 10px;line-height: 28px;margin-bottom:15px;}
         .pro_title2{color: #e4393c;margin-bottom: 15px;}
@@ -28,6 +28,7 @@
         .product_left{width: 255px;margin-right:15px;float: left;}
         .product_right{float: left;width: 910px;}
         .layui-colla-content img{max-width: 880px;}
+
     </style>
 </head>
 <body>
@@ -45,32 +46,27 @@
                 <div class="pro_title">${product.title}</div>
                 <div class="pro_title2">简单介绍商标注册 5000元 一次注册 中间不收取任何费用</div>
                 <div class="price_content">
-                    <div class="pro_price">
-                        <p>市场价：<s>${product.marketPrice}元</s></p>
-                        <p>活动价：<span class="now_price">${product.realPrice}元</span></p>
+                    <div class="pro_price" style="background-color:#75cdf1;width: 800px">
+                     <%--   <p>市场价：<s>${product.marketPrice}元</s></p>--%>
+                        <p style="background-color:#75cdf1">服务价钱：<span class="now_price"> <c:if test="${product.realPrice==0}">面议</c:if> <c:if test="${product.realPrice==null}">面议</c:if> <c:if test="${product.realPrice!=0&&product.realPrice!=null}">${product.realPrice}元</c:if> </span></p>
                     </div>
                 </div>
                 <div class="pro_type">服务类型：<span>${product.className}</span></div>
-                <div class="pro_type">在线咨询：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2153543428&amp;site=qq&amp;menu=yes"><img
-                        src="images/qq/qq.gif" /></a></div>
+               <%-- <div class="pro_type">在线咨询：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2153543428&amp;site=qq&amp;menu=yes"><img
+                        src="images/qq/qq.gif" /></a></div>--%>
+                <div> <button style="width: 80px;height: 40px;background-color: #ec5b56"> <a target="_blank" href="/adviser/detail/${product.memberId}.html" rel="nofollow" class="mr0">立即注册商标</a></button>
+                    <button style="width: 80px;height: 40px;margin-left: 100px;background-color:#2486b5" ><a href="http://sighttp.qq.com/msgrd?v=1&uin=${product.member.qq}&site=在线咨询&menu=yes" target="blank" >立即询价</a></button>
+                </div>
             </div>
             <div class="clear"></div>
         </div>
 
-        <div class="product_left">
 
-            <jsp:include page="/adviserRecommend/recommend.html">
-                <jsp:param value="201" name="plate"/>
-                <jsp:param value="1" name="currentPage"/>
-                <jsp:param value="3" name="pageSize"/>
-            </jsp:include>
-
-        </div>
         <div class="product_right">
             <div class="layui-collapse" lay-accordion="">
                 <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">产品简介</h2>
-                    <div class="layui-colla-content layui-show">
+                    <h2 class="layui-colla-title" style="width: 1120px">产品简介</h2>
+                    <div class="layui-colla-content layui-show" >
                         <%--<p>在前端技术快速变革的今天，layui 仍然坚持语义化的组织模式，甚至于模块理念都是采用类AMD组织形式，并非是有意与时代背道而驰。layui 认为以jQuery为核心的开发方式还没有到完全消亡的时候，而早期市面上基于jQuery的UI都普通做得差强人意，所以需要有一个新的UI去重新为这一领域注入活力，并采用一些更科学的架构方式。--%>
                             <%--<br>--%>
                             <%--因此准确地说，layui 更多是面向那些追求开发简单的前端工程师们，以及所有层次的服务端程序员。</p>--%>

@@ -34,7 +34,7 @@
 </div>
 
 <div class="content top-search">
-    <div class="logo-box"><img src="/images/logo_h.png"></div>
+    <div class="logo-box"><a href="index.html"><img src="/images/logo_h.png"></a></div>
     <div class="search-form">
 
         <form action="" id="queryType" method="post" class="inlineb" target="_blank">
@@ -59,7 +59,7 @@
         <ul>
             <li class="nav-li1">
                 <a href="javascript:void(0);"><i class="size25" style="background-position: -25px 0px;"></i>服务分类</a>
-                <div class="nav-l2-container">
+                <div class="nav-l2-container" >
                     <div class="nav-l2c">
                         <div class="nav-t2">金融服务</div>
                         <div class="nav-c2">

@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:forEach items="${needs}" var="need" >
+<c:forEach items="${needs}" var="need"    begin="0" end="3" step="1" >
 <dl id="listoffer_${need.id}" class="clearfix">
     <dt>
         <a href="/adviser/detail/${need.memberId}.html" target="_blank">
