@@ -160,7 +160,12 @@ public class OpenNeedAction extends BaseController{
         String view ="openNeed/detail";
         needService.addHitsByNid(needId);
         Need need = needService.getNeedDetail(needId);
-        MemberRecommend memberRecommend1= new MemberRecommend();
+        MemberRecommend memberRecommend = new MemberRecommend();
+
+        memberRecommend.setStatus(StatusUtil.VALID.getVal());
+
+        List<MemberRecommend> memberRecommends =  memberRecommendService.getMemberRecommendList(memberRecommend);
+
 
 
         Integer chargeType = need.getChargeType();
@@ -173,7 +178,7 @@ public class OpenNeedAction extends BaseController{
             }
         }
         mav.getModel().put("need", need);
-
+        mav.getModel().put("memberRecommends",memberRecommends);
 
 
         mav.setViewName(view);
@@ -185,6 +190,7 @@ public class OpenNeedAction extends BaseController{
         String view;
         Long memberId =super.getMemberId(request);
         Member member = memberService.getMemberById(memberId);
+
         Integer viewCount = member.getNeedViewCount();
         if (viewCount != null && viewCount > 0) {
             member.setNeedViewCount(viewCount - 1);
@@ -195,6 +201,7 @@ public class OpenNeedAction extends BaseController{
             view = "redirect:/need/toSearch.html";
         }
         mav.setViewName(view);
+
         return mav;
     }
     /**

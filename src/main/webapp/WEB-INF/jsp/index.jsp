@@ -831,9 +831,11 @@
     <div class="hd">
         <ul><li>1</li><li>2</li><li>3</li></ul>
     </div>
-    <div class="bd">
-        <ul>
+    <div class="bd" id="flexslider">
+        <ul ">
             <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/1.jpg" /></a></li>
+            <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/2.jpg" /></a></li>
+            <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/3.jpg" /></a></li>
         </ul>
     </div>
 
@@ -848,7 +850,7 @@
         $(".nav-l2-container").css("display","block");
     });
     var ary = location.href.split("&");
-    jQuery(".slideBox").slide( { mainCell:".bd ul", effect:ary[1],autoPlay:ary[2],trigger:ary[3],easing:ary[4],delayTime:ary[5],mouseOverStop:ary[6],pnLoop:ary[7] });
+    jQuery(".slideBox").slide({mainCell:".bd ul",effect:"fold",autoPlay:true});
 </script>
 
 
@@ -1126,6 +1128,21 @@
     });
 </script>
 <script>
+    $('#flexslider').flexslider({
+        /*directionNav: true,
+         pauseOnAction: false*/
+        slideshowSpeed: 3000, //  定时器,时间间隔
+        pauseOnHover: true // 鼠标悬停停止播放
+    });
+
+
+
+</script>
+<script>
+
+
+
+
     var cureentTime = 0;
     layui.use(['form'], function(){
         var form = layui.form()

@@ -53,7 +53,7 @@ public class MemberAction extends BaseController{
 
 		mav.getModel().put("member", member);
 //		mav.getModel().put("counselors", counselors);
-		mav.setViewName("member/index");
+		mav.setViewName("member/index2");
 		return mav;
 	}
 

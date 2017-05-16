@@ -79,6 +79,7 @@ public class AdviserAction extends BaseController{
 		paging.setTotalCount(page.getTotal());
 		mav.getModel().put("paging",paging);
 		mav.getModel().put("members",members);
+
 		mav.setViewName("adviser/paging");
 		return mav;
 	}
