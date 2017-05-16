@@ -161,7 +161,7 @@ public class OpenNeedAction extends BaseController{
         needService.addHitsByNid(needId);
         Need need = needService.getNeedDetail(needId);
         MemberRecommend memberRecommend1= new MemberRecommend();
-        List<MemberRecommend> memberRecommends =  memberRecommendService.getMemberRecommendList(memberRecommend1);
+
 
         Integer chargeType = need.getChargeType();
         if (chargeType != null && chargeType == StatusUtil.COLLECT_FEE.getVal()) {
@@ -173,7 +173,7 @@ public class OpenNeedAction extends BaseController{
             }
         }
         mav.getModel().put("need", need);
-        mav.getModel().put("memberRecommends",memberRecommends);
+
 
 
         mav.setViewName(view);

@@ -72,8 +72,11 @@
             <h1>用户小鬼申请贷款</h1>
             <ul>
                 <li class="libg">基本信息</li>
-                <li><span>姓名：${need.member.name}</span><span>所在地区：${need.areaFullName}-${need.member.address}</span>
-                    <button id="DH" onclick="dh()">查看联系方式</button><span id="moble" style="color: #21a2e7;padding-left: 410px" >联系方式:${need.member.mobile}</span></li>
+
+                <li><span>姓名：  <c:if test="${member.name==null}">xxxx</c:if>
+                    <c:if test="${member.name!=null}">
+                          ${fn:substring(member.name,0,4)}</c:if></span><span>所在地区：${need.areaFullName}-${need.member.address}</span>
+                    <button id="DH" onclick="dh()">查看联系方式</button><span id="moble" style="color: #21a2e7;padding-left: 290px" >联系方式:${need.member.mobile}</span></li>
                 <li class="libg">贷款信息</li>
                <%-- <li>
                 <c:forEach items="${need.attributes}" var="attribute" >
@@ -93,9 +96,10 @@
         </div>
         <div class="user_right">
             <div class="user_right_u">
-                <div><img src="images/user-u.jpg" alt="请设置头像"></div>
+                <div><img src="http://qbb.open580.com:80/${currentUser.headPortrait}"></div>
                 <div class="user_right_top">${currentUser.name}</div>
-                <div class="user_right_center">个人简介：<span>${currentUser.description}</span></div>
+
+                <div class="user_right_center">个人简介：<span>${fn:substring(currentUser.description,0,20)}</span></div>
                 <button>查看个人中心</button>
             </div>
         </div>
@@ -123,7 +127,8 @@
             <div class="tab_right_list">
                 <div class="img2"><img width="50" height="50" src="${memberRecommend.headPortrait}" alt="${memberRecommend.companyName}" title="${memberRecommend.companyName}"></div>
                 <div class="text">
-                    <p><a href="/adviser/detail/${memberRecommend.memberId}.html" class="size18">${memberRecommend.memberName}</a></p>
+
+                    <p><a href="/adviser/detail/${memberRecommend.memberId}.html" class="size18"> ${fn:substring(memberRecommend.memberName,0,15)}</a></p>
                     <p>   <c:choose>
                         <c:when test="${memberRecommend.level==1}">
                             普通顾问

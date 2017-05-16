@@ -114,7 +114,7 @@
         /*** tab切换部分（人脉、服务、产品） ***/
         .offerlist{width: 780px;float: left;margin-right: 25px;background-color: #FFF;}
         .offerlist dl {
-            padding: 20px 0;
+            padding: 18px 0;
             border-bottom: 1px solid #ddd;
         }
         .offerlist dt {
@@ -483,8 +483,8 @@
             overflow: hidden;
         }
         .business-new-big>img {
-            width: 100%;
-            height: 100%;
+            width: 98%;
+            height: 98%;
         }
         .business-new-big>p {
             position: absolute;
@@ -494,6 +494,7 @@
             line-height: 36px;
             font-size: 16px;
             color: #fff;
+            width: 94%;
             padding: 0 10px;
             white-space: nowrap;
             overflow: hidden;
@@ -919,15 +920,18 @@
                 <div class="layui-tab-content" style="padding-left: 0px;">
                     <div class="layui-tab-item layui-show">
                         <div class="offerlist">
-                            <div class="offerlistclss offerlistclssPerson"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
+                            <div class="offerlistclss offerlistclssAdviser"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
+
                             <div id="needDataMsgAdvier"></div>
 
                         </div>
                     </div>
                     <div class="layui-tab-item">
-                        <div class="offerlist">
-                            <div class="offerlistclss offerlistclssAdviser"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
-                           <div id="needDataMsgPerson"></div>
+                        <div class="offerlist" >
+                                <div class="offerlistclss offerlistclssPerson"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
+
+
+                                <div id="needDataMsgPerson"></div>
                         </div>
                     </div>
                 </div>
