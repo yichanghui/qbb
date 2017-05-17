@@ -20,7 +20,7 @@
 
         <div class="list">
             <ul>
-                <li><p>店铺管理</p><p>Store&nbsp;managemengt</p></li>
+                <li><p>店铺管理</p><p>store&nbsp;managemengt</p></li>
                 <li>
                     <a href="#">店铺管理</a>
                 </li>

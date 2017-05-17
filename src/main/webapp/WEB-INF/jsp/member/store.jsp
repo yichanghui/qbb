@@ -11,6 +11,7 @@ String basePath = request.getScheme() + "://"
 	<head>
 		<meta charset="UTF-8">
 		<title>我的店铺</title>
+		<base href="<%=basePath%>">
 		<jsp:include page="../common/css_c.jsp"></jsp:include>
 		<script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
 		<link rel="stylesheet" type="text/css" href="/css/store.css" />
