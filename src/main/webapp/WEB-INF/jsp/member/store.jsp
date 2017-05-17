@@ -75,7 +75,7 @@ String basePath = request.getScheme() + "://"
 						<%--<button>修改</button>--%>
 					</p>
 					<p>店铺店址 ： <%=basePath%>/adviser/detail/${member.id}.html <button onclick="location.href='<%=basePath%>/adviser/detail/${member.id}.html'">查看</button></p>
-					<p>个人介绍 ： <span>${member.description}</span><button  onclick="location.href='/member/toPersonalData.html'">修改简历</button></p>
+					<p>个人介绍 ： <span class="beyond2">${member.description}</span><button  onclick="location.href='/member/toPersonalData.html'">修改简历</button></p>
 				</div>
 			</div>
 			<!--user-->
