@@ -47,8 +47,8 @@
 		<link rel="stylesheet" type="text/css" href="../css/Home page.css" />
 		<link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
 
-		<script type="text/javascript" src="../js/scrooll.js"></script>
 		<script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="../js/scrooll.js"></script>
 	</head>
 	<body>
 		<!--头部-->
@@ -65,7 +65,7 @@
 						<%--	<input type="file" name="file"  id="uploadHeadPortrait">
 						<button class="layui-btn" lay-submit="" lay-filter="demo1">修改头像</button>--%>
 
-				</p>
+						</p>
 
 						</form>
 					</div>
@@ -85,16 +85,16 @@
 
 
 						</span></p>
-						<p>个人介绍： <span>${member.description}</span></p>
-						<p><button>[修改]</button></p>
+						<p>个人介绍： <span class="beyond2">${member.description}</span></p>
+						<p><button onclick="location.href='/member/toPersonalData.html'">[修改]</button></p>
 					</div>
 				</div><!--data-->
 				<div class="promote">
 					<div class="number">
-						<p>今日查看次数： <span>50</span>次</p>
+						<%--<p>今日查看次数： <span>50</span>次</p>--%>
 						<p>剩余查看数量： <span>${member.needViewCount}</span>次</p>
-						<p>&nbsp;&nbsp;&nbsp;总查看数量： <span>50</span>次</p>
-						<button>充值</button>
+						<%--<p>&nbsp;&nbsp;&nbsp;总查看数量： <span>50</span>次</p>--%>
+						<%--<button>充值</button>--%>
 					</div>
 					<div class="vip">
 						<ul>
@@ -114,11 +114,11 @@
 			<div class="clear"></div>
 			<div class="nav_a">
 				<ul>
-					<li><a href="">全部商机</a></li>
-					<li><a href="">同业商机</a></li>
-					<li><a href="">向我申请</a></li>
-					<li><a href="">向我提问</a></li>
-					<li><button>发布需求</button></li>
+					<li><a href="javascript:void(0)">全部商机</a></li>
+					<%--<li><a href="">同业商机</a></li>--%>
+					<%--<li><a href="">向我申请</a></li>--%>
+					<%--<li><a href="">向我提问</a></li>--%>
+					<li><button id="addNeed">发布需求</button></li>
 					<div class="clear"></div>
 				</ul>
 			</div>
@@ -127,16 +127,10 @@
 				</div>
 				<div id="pager"></div>
 
-
-
 			</div><!--tab_left-->
-			<div class="announcement">
+			<div class="announcement" id="notice">
 				<p><span class="gong">公告</span><span class="gong">动态</span></p>
-				<p><span>[公告] </span>诚信才能让企业路路通</p>
-				<p><span>[公告] </span>诚信才能让企业路路通</p>
-				<p><span>[公告] </span>诚信才能让企业路路通</p>
-				<p><span>[公告] </span>诚信才能让企业路路通</p>
-				<p><span>[公告] </span>诚信才能让企业路路通</p>
+				<%--<p><span>[公告] </span>诚信才能让企业路路通</p>--%>
 			</div>
 			<div class="img_box2">
 				<img src="images/service.jpg"/>
@@ -153,6 +147,7 @@
 	</body>
 	<script src="/plugins/layui/layui.js" charset="utf-8"></script>
 <script>
+$(function () {
     layui.use(['laypage', 'layer'], function(){
 
         var laypage = layui.laypage
@@ -188,6 +183,27 @@
         //运行
         paging();
     });
+
+
+	$.ajax({
+		type: "get",
+		url: "/article/list.json",
+		success: function(data){
+			var articles = data.articles;
+			if(articles) {
+				var content = '';
+				articles.forEach(function (item, index) {
+					content += '<p><span>[公告] </span><a href="/article/detail/'+item.id+'.html">'+item.title+'</a></p>';
+				});
+				$("#notice").append(content);
+			}
+		}
+	});
+	$("#addNeed").click(function () {
+		location.href = "/member/need/toAdd/0.html";
+
+	});
+});
 
 </script>
 

@@ -189,7 +189,13 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	-webkit-line-clamp: 2;
 	overflow: hidden;
 }
-
+.hidden_text {
+	width:200px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	overflow: hidden;
+}
 .module_nav{margin-bottom:56px;}
 .module_title{font-size: 16px;padding: 18px 0px;border-bottom: 1px solid #999999;}
 
