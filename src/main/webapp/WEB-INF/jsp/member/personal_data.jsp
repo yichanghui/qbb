@@ -40,18 +40,20 @@
             <div class="user_left">
                 <div class="img_box">
                     <img src="images/touxiang1.jpg">
-                    <p><button>修改头像</button></p>
+                    <%--<p><button>修改头像</button></p>--%>
                 </div>
                 <div class="text">
                     <p>账户：<span>${member.name}</span></p>
                     <p></p>
-                    <p>账户余额：<span>0 <button>[ 充值 ]</button></span></p>
-                    <p>消费总额：<span>0 元</span></p>
+                    <%--<p>账户余额：<span>0 <button>[ 充值 ]</button></span></p>--%>
+                    <%--<p>消费总额：<span>0 元</span></p>--%>
                 </div>
             </div>
             <div class="user_right">
-                <p>显示姓名 : 【 <span>开启</span> 】<button>预览</button></p>
-                <p>店铺状态  :  &nbsp;&nbsp;<span>审核通过</span><button>修改</button></p>
+                <%--<p>显示姓名 : 【 <span>开启</span> 】<button>预览</button></p>--%>
+                <p>店铺状态  :  &nbsp;&nbsp;<span>审核通过</span>
+                    <%--<button>修改</button>--%>
+                </p>
                 <p>店铺店址 ：<%=basePath%>/adviser/detail/${member.id}.html <button><a href="/adviser/detail/${member.id}.html">查看</a></button></p>
                 <p>个人介绍 ： <span>质押贷款2个点，办理工商，法律，金融各种业务等等等等等等等22222222222</span><button>修改简历</button></p>
             </div>
