@@ -84,6 +84,7 @@
 	width: 230px;
 	border: 1px solid #63BCDE;
 	border-radius: 2px;
+	min-height: 400px;
 }
 .list li{
 	color: #313332;

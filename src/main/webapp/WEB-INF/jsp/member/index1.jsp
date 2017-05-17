@@ -92,7 +92,7 @@
 				<div class="promote">
 					<div class="number">
 						<p>今日查看次数： <span>50</span>次</p>
-						<p>剩余查看数量： <span>10</span>次</p>
+						<p>剩余查看数量： <span>${member.needViewCount}</span>次</p>
 						<p>&nbsp;&nbsp;&nbsp;总查看数量： <span>50</span>次</p>
 						<button>充值</button>
 					</div>

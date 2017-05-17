@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -81,22 +80,22 @@ public class MemberAction extends BaseController{
 
 	@RequestMapping(value="/toMember")
 	public String selectMemberType(HttpServletRequest request) {
-		Member member = new Member();
-		member.setId(super.getMemberId(request));
-		Object type = request.getParameter("type");
-		if(null!=type&&type.equals("adviser")){
-			member.setType(1);
-			member.setStatus(1);
-		}else{
-			member.setType(0);
-			member.setStatus(4);
-		}
-		memberService.updateMember(member);
-		//更新session里面的值
-		HttpSession session = request.getSession();
-		Member memberSession = (Member) request.getSession().getAttribute("currentUser");
-		memberSession.setType(member.getType());
-		session.setAttribute("currentUser", memberSession);
+//		Member member = new Member();
+//		member.setId(super.getMemberId(request));
+//		Object type = request.getParameter("type");
+//		if(null!=type&&type.equals("adviser")){
+//			member.setType(1);
+//			member.setStatus(1);
+//		}else{
+//			member.setType(0);
+//			member.setStatus(4);
+//		}
+//		memberService.updateMember(member);
+//		//更新session里面的值
+//		HttpSession session = request.getSession();
+//		Member memberSession = (Member) request.getSession().getAttribute("currentUser");
+//		memberSession.setType(member.getType());
+//		session.setAttribute("currentUser", memberSession);
 		return "member/member_info";
 	}
 
@@ -117,42 +116,42 @@ public class MemberAction extends BaseController{
 	 */
 	@RequestMapping(value="/info")
 	public ModelAndView memberInfo(HttpServletRequest request,ModelAndView mav) {
-		Member member = new Member();
-		member.setId(super.getMemberId(request));
-		member =  memberService.getMemberInfo(member);
-		if (member != null) {
-			Long companyId = member.getCompanyId();
-			if (Optional.ofNullable(companyId).isPresent()) {
-				member.setCompanyName(companyService.getCompanyNameById(companyId));
-			}
-		}
-		List<Area> oneLevelAreas = areaService.getAllOneLevel();
-		String areaCode = member.getAreaCode();
-		if (StringUtils.isNotEmpty(areaCode)) {
-			Area selectArea = new Area();
-			List<Area> twoLevelAreas;
-			List<Area> threeLevelAreas;
-			String[] areas = areaCode.split("-");
-			for (int i = 0; i < areas.length; i++) {
-				Long areaId = Long.parseLong(areas[i]);
-				if (i == 0) {
-					twoLevelAreas = areaService.getSonAreas(areaId);
-					mav.getModel().put("twoLevelAreas", twoLevelAreas);
-					selectArea.setOneLevel(areaId);
-				}
-				if (i == 1) {
-					threeLevelAreas = areaService.getSonAreas(areaId);
-					mav.getModel().put("threeLevelAreas", threeLevelAreas);
-					selectArea.setTwoLevel(areaId);
-				}
-				if (i == 2) {
-					selectArea.setThreeLevel(areaId);
-				}
-			}
-			mav.getModel().put("selectArea", selectArea);
-		}
-		mav.getModel().put("oneLevelAreas", oneLevelAreas);
-		mav.getModel().put("member", member);
+//		Member member = new Member();
+//		member.setId(super.getMemberId(request));
+//		member =  memberService.getMemberInfo(member);
+//		if (member != null) {
+//			Long companyId = member.getCompanyId();
+//			if (Optional.ofNullable(companyId).isPresent()) {
+//				member.setCompanyName(companyService.getCompanyNameById(companyId));
+//			}
+//		}
+//		List<Area> oneLevelAreas = areaService.getAllOneLevel();
+//		String areaCode = member.getAreaCode();
+//		if (StringUtils.isNotEmpty(areaCode)) {
+//			Area selectArea = new Area();
+//			List<Area> twoLevelAreas;
+//			List<Area> threeLevelAreas;
+//			String[] areas = areaCode.split("-");
+//			for (int i = 0; i < areas.length; i++) {
+//				Long areaId = Long.parseLong(areas[i]);
+//				if (i == 0) {
+//					twoLevelAreas = areaService.getSonAreas(areaId);
+//					mav.getModel().put("twoLevelAreas", twoLevelAreas);
+//					selectArea.setOneLevel(areaId);
+//				}
+//				if (i == 1) {
+//					threeLevelAreas = areaService.getSonAreas(areaId);
+//					mav.getModel().put("threeLevelAreas", threeLevelAreas);
+//					selectArea.setTwoLevel(areaId);
+//				}
+//				if (i == 2) {
+//					selectArea.setThreeLevel(areaId);
+//				}
+//			}
+//			mav.getModel().put("selectArea", selectArea);
+//		}
+//		mav.getModel().put("oneLevelAreas", oneLevelAreas);
+//		mav.getModel().put("member", member);
 		mav.setViewName("member/member_info");
 		return mav;
 	}
@@ -204,9 +203,46 @@ public class MemberAction extends BaseController{
     }
 
     @RequestMapping(value="/toPersonalData")
-    public String toPersonalData(HttpServletRequest request) {
+    public ModelAndView toPersonalData(HttpServletRequest request,ModelAndView mav) {
         request.setAttribute("personaldata","hover");
-        return "member/personal_data";
+		Member member = new Member();
+		member.setId(super.getMemberId(request));
+		member =  memberService.getMemberInfo(member);
+		if (member != null) {
+			Long companyId = member.getCompanyId();
+			if (Optional.ofNullable(companyId).isPresent()) {
+				member.setCompanyName(companyService.getCompanyNameById(companyId));
+			}
+		}
+		List<Area> oneLevelAreas = areaService.getAllOneLevel();
+		String areaCode = member.getAreaCode();
+		if (StringUtils.isNotEmpty(areaCode)) {
+			Area selectArea = new Area();
+			List<Area> twoLevelAreas;
+			List<Area> threeLevelAreas;
+			String[] areas = areaCode.split("-");
+			for (int i = 0; i < areas.length; i++) {
+				Long areaId = Long.parseLong(areas[i]);
+				if (i == 0) {
+					twoLevelAreas = areaService.getSonAreas(areaId);
+					mav.getModel().put("twoLevelAreas", twoLevelAreas);
+					selectArea.setOneLevel(areaId);
+				}
+				if (i == 1) {
+					threeLevelAreas = areaService.getSonAreas(areaId);
+					mav.getModel().put("threeLevelAreas", threeLevelAreas);
+					selectArea.setTwoLevel(areaId);
+				}
+				if (i == 2) {
+					selectArea.setThreeLevel(areaId);
+				}
+			}
+			mav.getModel().put("selectArea", selectArea);
+		}
+		mav.getModel().put("oneLevelAreas", oneLevelAreas);
+		mav.getModel().put("member", member);
+		mav.setViewName("member/personal_data");
+        return mav;
     }
 
 }
