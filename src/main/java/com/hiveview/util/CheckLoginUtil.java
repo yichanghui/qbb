@@ -34,15 +34,4 @@ public class CheckLoginUtil {
         ).orElse(false);
     }
 
-    public static void main(String[] args) {
-        System.err.println("1=============="+isFilter("/member/asd/dsa.html"));
-        System.err.println("2=============="+isFilter("/memberasd/dsa.html"));
-        System.err.println("3=============="+isFilter("/member"));
-        System.err.println("4=============="+isFilter("/membe"));
-        System.err.println("5=============="+isFilter("member"));
-        System.err.println("6=============="+isFilter("member/"));
-        System.err.println("7=============="+isFilter("/myTest/asd/dsa"));
-        System.err.println("8=============="+isFilter("/myTest1"));
-    }
-
 }
