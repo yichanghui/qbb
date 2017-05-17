@@ -197,9 +197,14 @@ public class MemberAction extends BaseController{
     }
 
     @RequestMapping(value="/toManagement")
-    public String toManagement(HttpServletRequest request) {
+    public ModelAndView toManagement(HttpServletRequest request,ModelAndView mav) {
+		Member member = new Member();
+		member.setId(super.getMemberId(request));
+		member =  memberService.getMemberInfo(member);
         request.setAttribute("management","hover");
-        return "company/management";
+		mav.getModel().put("member",member);
+		mav.setViewName("company/management");
+        return mav;
     }
 
     @RequestMapping(value="/toPersonalData")

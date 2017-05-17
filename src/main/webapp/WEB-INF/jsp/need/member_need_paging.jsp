@@ -13,18 +13,20 @@
         <li>联系电话</li>
         <li>所在地区</li>
         <li>发布时间</li>
+        <li>操作</li>
     </ul>
 
     <tbody>
 
     <c:forEach items="${needs}" var="need" >
         <ul>
-            <li><a name="lookNeed" href="javascript:void(0);" needId="${need.id}" >${need.title}</a></li>
+            <li  class="hidden_text" title="${need.title}">${need.title}</li>
             <li>${need.className}</li>
             <li>${need.member.name}</li>
             <li>${fn:substring(need.needMobile,0,7)}****</li>
             <li>${need.areaFullName}</li>
             <li><fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></li>
+            <li><a name="lookNeed" href="javascript:void(0);" needId="${need.id}" >查看</a></li>
         </ul>
 
     </c:forEach>
