@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName();
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <style>
 	.file {
@@ -36,7 +36,7 @@
 </style>
 <html>
 	<head>
-		<base href="<%=basePath%>">
+        <base href="<%=basePath%>">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<title>首页</title>
@@ -76,7 +76,7 @@
 						<p><button>修改头像</button></p>
 					</div>
 					<div class="text">
-						<p>账户：<span>赵军</span></p>
+						<p>账户：<span>${member.name}</span></p>
 						<p></p>
 						<p>账户余额：<span>0 <button>[ 充值 ]</button></span></p>
 						<p>消费总额：<span>0 元</span></p>
@@ -85,7 +85,7 @@
 				<div class="user_right">
 					<p>显示姓名 : 【 <span>开启</span> 】<button>预览</button></p>
 					<p>店铺状态  :  &nbsp;&nbsp;<span>审核通过</span><button>修改</button></p>
-					<p>店铺店址 ： http//iz.sdai.com/guwen/23076 <button>查看</button></p>
+					<p>店铺店址 ： http//iz.sdai.com/guwen/23076 <button><a href="/adviser/detail/${member.id}.html">查看</a></button></p>
 					<p>个人介绍 ： <span>质押贷款2个点，办理工商，法律，金融各种业务等等等等等等等22222222222</span><button>修改简历</button></p>
 				</div>
 			</div>
