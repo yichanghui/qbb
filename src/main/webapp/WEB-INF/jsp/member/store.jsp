@@ -13,7 +13,7 @@ String basePath = request.getScheme() + "://"
 		<title>我的店铺</title>
 		<jsp:include page="../common/css_c.jsp"></jsp:include>
 		<script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
-		<link rel="stylesheet" type="text/css" href="/css/Store.css" />
+		<link rel="stylesheet" type="text/css" href="/css/store.css" />
 		<script type="text/javascript" src="/plugins/layui/layui.js"></script>
 		<script type="text/javascript" src="../js/scrooll.js"></script>
 
