@@ -6,17 +6,24 @@
     <meta charset="UTF-8">
     <base href="<%=basePath%>">
     <title>企巴巴</title>
-    <jsp:include page="../common/css_c.jsp"></jsp:include>
-    <link rel="stylesheet" type="text/css" href="/css/store.css" />
+    <jsp:include page="../common/css.jsp"></jsp:include>
+    <link rel="stylesheet" href="../css/buysell.css">
     <link rel="stylesheet" href="../plugins/layui/css/global.css">
+    <script src="../plugins/layui/layui.js" charset="utf-8"></script>
+    <style>
+        .member_menu li{width: 100%;height:35px;line-height:35px;border-bottom: 1px solid #eee;}
+        .member_menu li a{margin-left:20px;}
+        .c_right{margin-left:10px;width: 958px;float: left;}
+    </style>
 </head>
 <body>
-<jsp:include page="../common/top_c2.jsp"></jsp:include>
-<div>
+<jsp:include page="../common/top_c.jsp"></jsp:include>
+<jsp:include page="../common/nav_c.jsp"></jsp:include>
+<div id="container">
     <div class="content memver_c">
-        <jsp:include page="../common/left_c_adviser.jsp"></jsp:include>
+        <jsp:include page="../common/left_c.jsp"></jsp:include>
 
-        <div class="c_right" style="width: 930px;padding-top: 15px;">
+        <div class="c_right">
             <p class="layui-elem-quote noborderLeft">关联企业</p>
             <c:if test="${member.companyId != null}">
                 <blockquote class="layui-elem-quote layui-quote-nm">

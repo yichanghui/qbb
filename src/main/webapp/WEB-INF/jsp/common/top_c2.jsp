@@ -6,15 +6,15 @@
     <div class="box_list">
         <ul>
             <li>
-                <a href="">首页</a>丨</li>
+                <a href="/member/index.html">首页</a>丨</li>
             <li>
-                <a href="">${currentUser.mobile}</a>丨</li>
+                <a href="/member/index.html">${currentUser.mobile}</a>丨</li>
             <li>
                 <a href="">消息</a>丨</li>
             <li>
                 <a href="">服务中心</a>丨</li>
             <li>
-                <a href="">退出</a>
+                <a href="/logout.html">退出</a>
             </li>
         </ul>
     </div>
