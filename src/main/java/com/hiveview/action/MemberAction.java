@@ -40,6 +40,10 @@ public class MemberAction extends BaseController{
 		Member member = new Member();
 		member.setId(super.getMemberId(request));
 		member =  memberService.getMemberInfo(member);
+		if(member.getType()==0){
+			mav.setViewName("member/person_index");
+			return mav;
+		}
 		if (member != null) {
 			Long companyId = member.getCompanyId();
 			if (Optional.ofNullable(companyId).isPresent()) {
@@ -116,42 +120,42 @@ public class MemberAction extends BaseController{
 	 */
 	@RequestMapping(value="/info")
 	public ModelAndView memberInfo(HttpServletRequest request,ModelAndView mav) {
-//		Member member = new Member();
-//		member.setId(super.getMemberId(request));
-//		member =  memberService.getMemberInfo(member);
-//		if (member != null) {
-//			Long companyId = member.getCompanyId();
-//			if (Optional.ofNullable(companyId).isPresent()) {
-//				member.setCompanyName(companyService.getCompanyNameById(companyId));
-//			}
-//		}
-//		List<Area> oneLevelAreas = areaService.getAllOneLevel();
-//		String areaCode = member.getAreaCode();
-//		if (StringUtils.isNotEmpty(areaCode)) {
-//			Area selectArea = new Area();
-//			List<Area> twoLevelAreas;
-//			List<Area> threeLevelAreas;
-//			String[] areas = areaCode.split("-");
-//			for (int i = 0; i < areas.length; i++) {
-//				Long areaId = Long.parseLong(areas[i]);
-//				if (i == 0) {
-//					twoLevelAreas = areaService.getSonAreas(areaId);
-//					mav.getModel().put("twoLevelAreas", twoLevelAreas);
-//					selectArea.setOneLevel(areaId);
-//				}
-//				if (i == 1) {
-//					threeLevelAreas = areaService.getSonAreas(areaId);
-//					mav.getModel().put("threeLevelAreas", threeLevelAreas);
-//					selectArea.setTwoLevel(areaId);
-//				}
-//				if (i == 2) {
-//					selectArea.setThreeLevel(areaId);
-//				}
-//			}
-//			mav.getModel().put("selectArea", selectArea);
-//		}
-//		mav.getModel().put("oneLevelAreas", oneLevelAreas);
-//		mav.getModel().put("member", member);
+		Member member = new Member();
+		member.setId(super.getMemberId(request));
+		member =  memberService.getMemberInfo(member);
+		if (member != null) {
+			Long companyId = member.getCompanyId();
+			if (Optional.ofNullable(companyId).isPresent()) {
+				member.setCompanyName(companyService.getCompanyNameById(companyId));
+			}
+		}
+		List<Area> oneLevelAreas = areaService.getAllOneLevel();
+		String areaCode = member.getAreaCode();
+		if (StringUtils.isNotEmpty(areaCode)) {
+			Area selectArea = new Area();
+			List<Area> twoLevelAreas;
+			List<Area> threeLevelAreas;
+			String[] areas = areaCode.split("-");
+			for (int i = 0; i < areas.length; i++) {
+				Long areaId = Long.parseLong(areas[i]);
+				if (i == 0) {
+					twoLevelAreas = areaService.getSonAreas(areaId);
+					mav.getModel().put("twoLevelAreas", twoLevelAreas);
+					selectArea.setOneLevel(areaId);
+				}
+				if (i == 1) {
+					threeLevelAreas = areaService.getSonAreas(areaId);
+					mav.getModel().put("threeLevelAreas", threeLevelAreas);
+					selectArea.setTwoLevel(areaId);
+				}
+				if (i == 2) {
+					selectArea.setThreeLevel(areaId);
+				}
+			}
+			mav.getModel().put("selectArea", selectArea);
+		}
+		mav.getModel().put("oneLevelAreas", oneLevelAreas);
+		mav.getModel().put("member", member);
 		mav.setViewName("member/member_info");
 		return mav;
 	}

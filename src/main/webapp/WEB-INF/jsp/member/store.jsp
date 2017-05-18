@@ -11,6 +11,7 @@ String basePath = request.getScheme() + "://"
 	<head>
 		<meta charset="UTF-8">
 		<title>我的店铺</title>
+		<base href="<%=basePath%>">
 		<jsp:include page="../common/css_c.jsp"></jsp:include>
 		<script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
 		<link rel="stylesheet" type="text/css" href="/css/store.css" />
@@ -24,24 +25,7 @@ String basePath = request.getScheme() + "://"
 		<jsp:include page="../common/top_c2.jsp"></jsp:include>
 		<!--xian-->
 		<div class="content">
-			<div class="list">
-				<ul>
-					<li><p>店铺管理</p><p>Store&nbsp;managemengt</p></li>
-					<li>
-						<a href="#">店铺管理</a>
-					</li>
-					<li>
-						<a href="#">产品管理</a>
-					</li>
-					<li>
-						<a href="#">成功案例</a>
-					</li>
-					<li>
-						<a href="#">关联企业</a>
-					</li>
-					<p class="p1">好业务，让企巴巴帮你推广</p>
-				</ul>
-			</div>
+            <jsp:include page="../common/left_c_adviser.jsp"></jsp:include>
 			<div class="user">
 				<div class="user_left">
 					<div class="img_box">

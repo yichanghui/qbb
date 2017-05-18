@@ -7,68 +7,28 @@
     <meta charset="UTF-8">
     <base href="<%=basePath%>">
     <title>企巴巴</title>
-    <jsp:include page="../common/css_c.jsp"></jsp:include>
-    <link rel="stylesheet" type="text/css" href="/css/store.css" />
+    <jsp:include page="../common/css.jsp"></jsp:include>
+    <link rel="stylesheet" href="../css/buysell.css">
     <link rel="stylesheet" href="../plugins/layui/css/global.css">
+    <style>
+        .memver_c{margin-bottom: 15px;}
+        .member_menu li{width: 100%;height:35px;line-height:35px;border-bottom: 1px solid #eee;}
+        .member_menu li a{margin-left:20px;}
+        .gonggao_title{margin: 15px 5px;}
+        .gonggao{border: 1px solid #EEE;}
+        .gonggao li{width: 100%;height:45px;line-height:45px;border-bottom: 1px solid #eee;}
+        .gonggao li a{margin-left: 15px;}
+    </style>
 </head>
 <body>
-<jsp:include page="../common/top_c2.jsp"></jsp:include>
-<div>
+<jsp:include page="../common/top_c.jsp"></jsp:include>
+<jsp:include page="../common/nav_c.jsp"></jsp:include>
+<div id="container">
     <div class="content memver_c">
+        <jsp:include page="../common/left_c.jsp"></jsp:include>
 
-
-
-        <jsp:include page="../common/left_c_adviser.jsp"></jsp:include>
-        <div class="user">
-            <div class="user_left">
-                <div class="img_box">
-                    <img src="${member.headPortrait}" />
-                    <%--<p><button>修改头像</button></p>--%>
-                </div>
-                <div class="text">
-                    <p>账户：<span>${member.name}</span></p>
-                    <p></p>
-                    <%--<p>账户余额：<span>0 <button>[ 充值 ]</button></span></p>--%>
-                    <%--<p>消费总额：<span>0 元</span></p>--%>
-                </div>
-            </div>
-            <div class="user_right">
-                <%--<p>显示姓名 : 【 <span>开启</span> 】<button>预览</button></p>--%>
-                <p>店铺状态  :  &nbsp;&nbsp;
-                    <span>
-						<c:if test="${member.checkStatus == 4}">
-                            审核通过
-                        </c:if>
-						<c:if test="${member.checkStatus == 5}">
-                            审核失败
-                        </c:if>
-						<c:if test="${member.checkStatus == 3}">
-                            审核中
-                        </c:if>
-						<c:if test="${member.checkStatus == 0}">
-                            未审核
-                        </c:if>
-					</span>
-                    <%--<button>修改</button>--%>
-                </p>
-                <p>店铺店址 ： <%=basePath%>/adviser/detail/${member.id}.html <button onclick="location.href='<%=basePath%>/adviser/detail/${member.id}.html'">查看</button></p>
-                <p>个人介绍 ： <span class="beyond2">${member.description}</span><button  onclick="location.href='/member/toPersonalData.html'">修改简历</button></p>
-            </div>
-        </div>
-        <div id="container">
-            <div class="location">
-                您当前位置：
-                <a href="/index.html">企巴巴</a> &gt;&gt;
-                <a href="javascript:void(0);" class="defaultCursor">个人中心</a> &gt;&gt;
-                <a href="javascript:void(0);" class="defaultCursor">业务介绍</a>
-            </div>
-        </div>
-        <div class="">
-
-
-
-
-            <div class="form">
+        <div class="c_right">
+            <p class="layui-elem-quote noborderLeft">完成个人资料</p>
             <form class="layui-form" action="" id="memberInfo">
                 <div class="layui-form-item">
                     <label class="layui-form-label" style="margin-top: 80px;">个人头像</label>
@@ -186,7 +146,7 @@
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label"><span class="redColorClass">*</span>个人介绍</label>
                     <div class="layui-input-block">
-                        <textarea style="width: 95%;" placeholder="请输入内容" lay-verify="required"  name="description" class="layui-textarea">${member.description}</textarea>
+                        <textarea placeholder="请输入内容" lay-verify="required"  name="description" class="layui-textarea">${member.description}</textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -195,7 +155,7 @@
                     </div>
                 </div>
             </form>
-            </div>
+
         </div>
         <div class="clear"></div>
     </div>
