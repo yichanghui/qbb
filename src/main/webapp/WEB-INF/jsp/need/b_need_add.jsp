@@ -25,7 +25,7 @@
 <jsp:include page="../common/top_c2.jsp"></jsp:include>
 <!--xian-->
 <div class="content">
-    <%--<jsp:include page="../common/left_c_adviser.jsp"></jsp:include>--%>
+    <jsp:include page="../common/left_c_adviser.jsp"></jsp:include>
 
     <jsp:include page="/member/userInfo.html"></jsp:include>
 

@@ -18,8 +18,8 @@
 
 
 
-        <%--<jsp:include page="../common/left_c_adviser.jsp"></jsp:include>--%>
-        		<jsp:include page="/member/userInfo.html"></jsp:include>
+        <jsp:include page="../common/left_c_adviser.jsp"></jsp:include>
+        <jsp:include page="/member/userInfo.html"></jsp:include>
 
 
 
