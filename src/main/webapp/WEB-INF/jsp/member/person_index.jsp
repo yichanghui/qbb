@@ -18,6 +18,152 @@
         .gonggao{border: 1px solid #EEE;}
         .gonggao li{width: 100%;height:45px;line-height:45px;border-bottom: 1px solid #eee;}
         .gonggao li a{margin-left: 15px;}
+
+        .list_right {
+            position: relative;
+            padding-left: 15px;
+            float: left;
+            width: 990px;
+            px;
+            height: 700px;
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+
+        .list_right p {
+            color: #333;
+            height: 40px;
+            width: 500px;
+            position: relative;
+        }
+
+        .list_right p textarea {
+            position: absolute;
+            bottom: 6px;
+            left: 165px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+            width: 80%;
+            min-height: 10px;
+            height: auto;
+            resize: vertical;
+        }
+
+        .list_right p .img5 {
+            width: 15px;
+            height: 15px;
+            margin-top: -2px;
+        }
+
+        .list_right p textarea:hover {
+            border: 1px solid #D2D2D2;
+        }
+
+        .list_right p span:nth-of-type(1) {
+            display: inline-block;
+            width: 90px;
+            text-align: right;
+            padding-left: 75px;
+        }
+
+        .list_right p span:nth-of-type(3) {
+            padding-left: 10px;
+            color: #35d326;
+        }
+
+        .list_right .p_1 {
+            width: 100%;
+            position: relative;
+        }
+
+        .list_right .p_1 span:nth-of-type(1) {
+            padding-left: 30px;
+            width: 65px;
+            color: #000;
+            font-size: 16px;
+        }
+
+        .list_right .p_1 span:nth-of-type(2) {
+            position: absolute;
+            right: 2px;
+            color: #35d326;
+            font-size: 14px;
+        }
+
+        .list_right .huantou {
+            position: absolute;
+            right: 80px;
+            top: 30px;
+            padding: 25px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .list_right .huantou img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .list_right .huantou button {
+            position: relative;
+            right: -50px;
+            top: -120px;
+            width: 100px;
+            height: 40px;
+            color: #349DCD;
+            background: 0;
+            font-size: 16px;
+            border: 1px solid #349DCD;
+        }
+
+        .list_right .liebiao {
+            width: 90%;
+            margin-top: 20px;
+            margin-left: 90px;
+            border: 1px solid #cdccca;
+            border-bottom: 0;
+        }
+
+        .list_right ul {
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #cdccca;
+        }
+
+        .list_right ul:nth-of-type(1) {
+            background: #e9e8e6;
+        }
+
+        .list_right ul li {
+            color: #333333;
+            text-align: center;
+            float: left;
+            width: 158px;
+            height: 40px;
+        }
+
+        .list_right .geng {
+            height: 80px;
+            line-height: 80px;
+        }
+
+        .list_right .geng li {
+            height: 80px;
+            line-height: 80px;
+            font-size: 14px;
+            color: #888888;
+            padding: 0px 319px;
+        }
+
+        .list_right .li1,
+        .list_right .span1 {
+            color: #35D326;
+        }
+
+        .list_right .span2 {
+            color: #db2d44;
+        }
     </style>
 </head>
 <body>
@@ -28,134 +174,47 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote noborderLeft">完成个人资料</p>
-            <form class="layui-form" action="" id="memberInfo">
-                <div class="layui-form-item">
-                    <label class="layui-form-label" style="margin-top: 80px;">个人头像</label>
-                    <div class="layui-input-block">
-                        <div class="site-demo-upload">
-                            <img id="LAY_demo_upload" src="${member.headPortrait}" >
-                            <div class="site-demo-upbar">
-                                <input type="file" name="file" class="layui-upload-file" id="uploadHeadPortrait">
-                            </div>
-                        </div>
-                    </div>
-                    <input type="hidden" name="headPortrait" id="headPortrait" value="${member.headPortrait}">
+            <div class="list_right">
+                <p class="p_1"><span>我的信息</span></p>
+                <p><span>个人名称：</span><span>${member.name}</span></p>
+                <p><span>性别：</span>
+                    <span>
+                        <c:if test="${member.sex =='male'}">男</c:if>
+                        <c:if test="${member.sex =='female'}">none</c:if>
+                        <c:if test="${member.sex =='none'}">未填写</c:if>
+                    </span>
+                </p>
+                <p><span>联系电话：</span><span>${member.mobile}</span><span>(登录账号)</span></p>
+                <p><span>QQ：</span><span>${member.qq}</span></p>
+                <p><span>常用邮箱：</span><span>${member.email}</span></p>
+                <p><span>区域：</span><span>${member.areaFullName}</span></p>
+                <p><span>地址：</span><span>${member.address}</span></p>
+                <p><span>个人介绍：</span> <span >${member.description}</span></p>
+                <%--<p class="p_1"><span>需求列表</span></p>--%>
+                <div class="huantou">
+                    <img src="${member.headPortrait}" />
+                    <%--<button>+ 更换图片</button>--%>
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="redColorClass">*</span>个人名称</label>
-                    <div class="layui-input-inline">
-                        <input type="input" lay-verify="required"  name="name" value="${member.name}"  placeholder="" autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux"></div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">性别</label>
-                    <div class="layui-input-block">
-                        <input type="radio"   name="sex" value="male" title="男"  <c:if test="${member.sex == 'male'}">checked=""</c:if> >
-                        <input type="radio" name="sex" value="female" title="女" <c:if test="${member.sex == 'female'}">checked=""</c:if>>
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="redColorClass">*</span>联系电话</label>
-                    <div class="layui-input-inline" style="width: 300px;">
-                        <span class="layui-span-input font22">${member.mobile}</span>
-                        <span class="layui-span-input font22 redColorClass">(登录账号)</span>
-                    </div>
-                    <div class="layui-form-mid layui-word-aux"></div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">QQ</label>
-                    <div class="layui-input-inline">
-                        <input type="input" name="qq"  lay-verify="qq" value="${member.qq}"  placeholder="" autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux"></div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="redColorClass">*</span>常用邮箱</label>
-                    <div class="layui-input-inline">
-                        <input type="input" name="email" lay-verify="email"  value="${member.email}"  placeholder="" autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux"></div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">区域</label>
-                    <div class="layui-input-inline">
-                        <select  lay-filter="selectArea" id="oneLevel">
-                            <option value="">请选择</option>
-                            <c:forEach items="${oneLevelAreas}" var="area">
-                                <option value="${area.id}" <c:if test="${area.id == selectArea.oneLevel}">selected=""</c:if>  >${area.name}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <div class="layui-input-inline">
-                        <select  lay-filter="selectArea" id="twoLevel">
-                            <option value="">请选择</option>
-                            <%--<option value="宁波"selected="" disabled="">宁波</option>--%>
-                            <c:forEach items="${twoLevelAreas}" var="area">
-                                <option value="${area.id}" <c:if test="${area.id == selectArea.twoLevel}">selected=""</c:if> >${area.name}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <div class="layui-input-inline">
-                        <select lay-filter="selectArea" id="threeLevel">
-                            <option value="">请选择</option>
-                            <c:forEach items="${threeLevelAreas}" var="area">
-                                <option value="${area.id}" <c:if test="${area.id == selectArea.threeLevel}">selected=""</c:if> >${area.name}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <input type="hidden" id="areaCode1" >
-                    <input type="hidden" id="areaCode" name="areaCode" value="${member.areaCode}">
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">地址</label>
-                    <div class="layui-input-inline">
-                        <input type="input" name="address"  value="${member.address}"  placeholder="" autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux"></div>
-                </div>
-                <c:if test="${sessionScope.currentUser.type==1}">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label"><span class="redColorClass">*</span>顾问类型</label>
-                        <div class="layui-input-inline">
-                            <select  lay-filter="oneLevel" lay-verify="required"  name="adviserType">
-                                <option value="">请选择</option>
-                                <option value="1-" <c:if test="${member.adviserType == '1-'}">selected=""</c:if> >金融服务</option>
-                                <option value="2-" <c:if test="${member.adviserType == '2-'}">selected=""</c:if> >企业服务</option>
-                                <option value="3-" <c:if test="${member.adviserType == '3-'}">selected=""</c:if> >法律服务</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label"><span class="redColorClass">*</span>执业时间</label>
-                        <div class="layui-input-inline">
-                            <input type="input" lay-verify="required"  id="workTime" name="workTime"  value="<fmt:formatDate value="${member.workTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this, max: laydate.now(0)})">
-                        </div>
-                        <div class="layui-form-mid layui-word-aux"></div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label"><span class="redColorClass">*</span>所属企业</label>
-                        <div class="layui-input-inline">
-                            <input type="input" name="input"   value="${member.companyName}"  readonly disabled autocomplete="off" class="layui-input">
-                        </div>
-                        <div class="layui-form-mid layui-word-aux"><a href="javascript:void(0);" id="updateCompany" class="ta1">修改所属企业</a></div>
-                    </div>
-                </c:if>
-                <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label"><span class="redColorClass">*</span>个人介绍</label>
-                    <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" lay-verify="required"  name="description" class="layui-textarea">${member.description}</textarea>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                    </div>
-                </div>
-            </form>
-
+                <%--<div class="liebiao">--%>
+                    <%--<ul>--%>
+                        <%--<li>需求标题</li>--%>
+                        <%--<li>类目</li>--%>
+                        <%--<li>状态</li>--%>
+                        <%--<li>更新时间</li>--%>
+                        <%--<li>操作</li>--%>
+                    <%--</ul>--%>
+                    <%--<ul>--%>
+                        <%--<li>房贷</li>--%>
+                        <%--<li>抵押贷款</li>--%>
+                        <%--<li class="li1">审核成功</li>--%>
+                        <%--<li>2017-05-17 05:04:37</li>--%>
+                        <%--<li><span class="span1"> 修改 </span> &nbsp; <span> 下架 </span> &nbsp; <span class="span2"> 修改 </span></li>--%>
+                    <%--</ul>--%>
+                    <%--<ul class="geng">--%>
+                        <%--<li>+ 更多</li>--%>
+                    <%--</ul>--%>
+                <%--</div>--%>
+            </div>
         </div>
         <div class="clear"></div>
     </div>

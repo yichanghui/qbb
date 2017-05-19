@@ -10,15 +10,15 @@ import com.hiveview.service.ICategoryService;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.IProductService;
 import com.hiveview.util.LevelUtil;
-import utils.IssueType;
-import utils.StatusUtil;
-import utils.log.LogMgr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import utils.IssueType;
+import utils.StatusUtil;
+import utils.log.LogMgr;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -79,7 +79,7 @@ public class ProductAction extends BaseController{
 
 
 	@RequestMapping(value="/toAdd/{productId}")
-	public ModelAndView add(ModelAndView mav, @PathVariable("productId") Long productId) {
+	public ModelAndView add(HttpServletRequest request,ModelAndView mav, @PathVariable("productId") Long productId) {
 		Category category = new Category();
 		category.setLevel(LevelUtil.ONE_LEVEL.getVal());
 		int type = IssueType.PRODUCT.getVal();
@@ -113,8 +113,16 @@ public class ProductAction extends BaseController{
 			mav.getModel().put("twoLevelCategories", twoLevelCategories);
 			mav.getModel().put("threeLevelCategories", threeLevelCategories);
 		}
+		Integer memberType = super.getMemberType(request);
+		String page;
+		if (memberType == 1) {
+			page = "product/b_product_add";//商家
+		} else {
+			page = "product/p_product_add";//个人
+		}
+		mav.setViewName(page);
+		mav.getModel().put("store","hover");
 		mav.getModel().put("oneLevelCategories", oneLevelCategories);
-		mav.setViewName("product/product_add");
 		return mav;
 	}
 

@@ -41,6 +41,12 @@ public class MemberAction extends BaseController{
 		member.setId(super.getMemberId(request));
 		member =  memberService.getMemberInfo(member);
 		if(member.getType()==0){
+			String areaCode = member.getAreaCode();
+			if (StringUtils.isNotEmpty(areaCode)) {
+				Area area = areaService.getAreaByCode(areaCode);
+				member.setAreaFullName(Optional.ofNullable(area).map(a -> a.getFullName()).orElse(null));
+			}
+			mav.getModel().put("member", member);
 			mav.setViewName("member/person_index");
 			return mav;
 		}
@@ -59,10 +65,8 @@ public class MemberAction extends BaseController{
 		mav.setViewName("member/index1");
 		return mav;
 	}
-	@RequestMapping(value="/store")
-	public ModelAndView memberStore(HttpServletRequest request,ModelAndView mav1) {
-        request.setAttribute("store","hover");
-//		List<Member> counselors = memberService.getRecommendCounselorList();
+	@RequestMapping(value="/userInfo")
+	public ModelAndView userInfo(HttpServletRequest request,ModelAndView mav) {
 		Member member = new Member();
 		member.setId(super.getMemberId(request));
 		member =  memberService.getMemberInfo(member);
@@ -75,11 +79,9 @@ public class MemberAction extends BaseController{
 				member.setDescription(member.getDescription().substring(0,200)+"...");
 			}
 		}
-
-		mav1.getModel().put("member", member);
-//		mav.getModel().put("counselors", counselors);
-		mav1.setViewName("member/store");
-		return mav1;
+		mav.getModel().put("member", member);
+		mav.setViewName("member/info/user_info");
+		return mav;
 	}
 
 	@RequestMapping(value="/toMember")

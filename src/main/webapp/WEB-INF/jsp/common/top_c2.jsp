@@ -32,7 +32,7 @@
                 <a href="/member/toManagement.html">推广管理</a>
             </li>
             <li class="${store}">
-                <a href="/member/store.html">我的店铺</a>
+                <a href="/member/product/toAdd/0.html">我的店铺</a>
             </li>
             <li class="${personaldata}">
                 <a href="/member/toPersonalData.html">我的资料</a>

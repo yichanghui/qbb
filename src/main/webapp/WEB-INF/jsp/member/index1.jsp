@@ -201,7 +201,6 @@ $(function () {
 	});
 	$("#addNeed").click(function () {
 		location.href = "/member/need/toAdd/0.html";
-
 	});
 });
 

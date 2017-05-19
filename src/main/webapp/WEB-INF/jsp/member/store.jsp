@@ -25,44 +25,11 @@ String basePath = request.getScheme() + "://"
 		<jsp:include page="../common/top_c2.jsp"></jsp:include>
 		<!--xian-->
 		<div class="content">
-            <jsp:include page="../common/left_c_adviser.jsp"></jsp:include>
-			<div class="user">
-				<div class="user_left">
-					<div class="img_box">
-						<img src="${member.headPortrait}" />
-						<%--<p><button>修改头像</button></p>--%>
-					</div>
-					<div class="text">
-						<p>账户：<span>${member.name}</span></p>
-						<p></p>
-						<%--<p>账户余额：<span>0 <button>[ 充值 ]</button></span></p>--%>
-						<%--<p>消费总额：<span>0 元</span></p>--%>
-					</div>
-				</div>
-				<div class="user_right">
-					<%--<p>显示姓名 : 【 <span>开启</span> 】<button>预览</button></p>--%>
-					<p>店铺状态  :  &nbsp;&nbsp;
-					<span>
-						<c:if test="${member.checkStatus == 4}">
-							审核通过
-						</c:if>
-						<c:if test="${member.checkStatus == 5}">
-							审核失败
-						</c:if>
-						<c:if test="${member.checkStatus == 3}">
-							审核中
-						</c:if>
-						<c:if test="${member.checkStatus == 0}">
-							未审核
-						</c:if>
-					</span>
-						<%--<button>修改</button>--%>
-					</p>
-					<p>店铺店址 ： <%=basePath%>/adviser/detail/${member.id}.html <button onclick="location.href='<%=basePath%>/adviser/detail/${member.id}.html'">查看</button></p>
-					<p>个人介绍 ： <span class="beyond2">${member.description}</span><button  onclick="location.href='/member/toPersonalData.html'">修改简历</button></p>
-				</div>
-			</div>
-			<!--user-->
+            <%--<jsp:include page="../common/left_c_adviser.jsp"></jsp:include>--%>
+
+		<jsp:include page="/member/userInfo.html"></jsp:include>
+
+
 			<div id="container">
 				<div class="location">
 					您当前位置：
@@ -71,15 +38,96 @@ String basePath = request.getScheme() + "://"
 					<a href="javascript:void(0);" class="defaultCursor">业务介绍</a>
 				</div>
 			</div>
+				<div class="">
+					<form class="layui-form" action="" id="productForm">
+						<input type="hidden" name="id" value="${product.id}">
+						<div class="layui-form-item">
+							<label class="layui-form-label"><span class="redColorClass">*</span>产品名称</label>
+							<div class="layui-input-inline">
+								<input type="input" name="title" value="${product.title}" lay-verify="title" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label"><span class="redColorClass">*</span>简介</label>
+							<div class="layui-input-inline">
+								<input type="input" name="summary" value="${product.summary}" lay-verify="required" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">市场价</label>
+							<div class="layui-input-inline">
+								<input type="text" name="marketPrice" lay-verify="marketPrice" value="${product.marketPrice}" autocomplete="off" placeholder="请输入市场价" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">促销价</label>
+							<div class="layui-input-inline">
+								<input type="text" name="realPrice" lay-verify="realPrice" value="${product.realPrice}" autocomplete="off" placeholder="请输入促销价" class="layui-input">
+							</div>
+						</div>
 
-				<!--container-->
-				<div class="product" id="dataMsg">
-				<%--	<div class="layui-form" id="dataMsg"></div>--%>
+						<div class="layui-form-item">
+							<label class="layui-form-label"><span class="redColorClass">*</span>产品类型</label>
+							<div class="layui-input-inline">
+								<select  lay-verify="oneLevel" lay-filter="oneLevel" id="oneLevel">
+									<option value="">请选择</option>
+									<c:forEach items="${oneLevelCategories}" var="category">
+										<option value="${category.id}" <c:if test="${category.id == selectClass.oneLevel}">selected=""</c:if>  >${category.name}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="layui-input-inline">
+								<select  lay-filter="twoLevel" id="twoLevel">
+									<option value="">请选择</option>
+									<%--<option value="宁波"selected="" disabled="">宁波</option>--%>
+									<c:forEach items="${twoLevelCategories}" var="category">
+										<option value="${category.id}" <c:if test="${category.id == selectClass.twoLevel}">selected=""</c:if> >${category.name}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="layui-input-inline">
+								<select lay-filter="threeLevel" id="threeLevel">
+									<option value="">请选择</option>
+									<c:forEach items="${threeLevelCategories}" var="category">
+										<option value="${category.id}" <c:if test="${category.id == selectClass.threeLevel}">selected=""</c:if> >${category.name}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<input type="hidden" id="classId" name ="classId" value="${product.classId}" >
+						</div>
+
+
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="margin-top: 80px;">产品图片</label>
+							<div class="layui-input-block">
+								<div class="site-demo-upload">
+									<img id="LAY_demo_upload" src="${product.picture}" >
+									<div class="site-demo-upbar">
+										<input type="file" name="file" class="layui-upload-file" id="uploadImg">
+									</div>
+								</div>
+							</div>
+							<input type="hidden" name="picture" id="picture" value="${product.picture}">
+						</div>
+
+
+
+
+						<div class="layui-form-item layui-form-text">
+							<label class="layui-form-label">产品介绍</label>
+							<div class="layui-input-block">
+								<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor">${product.content}</textarea>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+							</div>
+						</div>
+					</form>
+					</div>
 				</div>
 				<div class="clear"></div>
-				<div id="pager" style="width: 930px;margin-left: 8px;float: left;"></div>
-			<div class="clear"></div>
-			<!--members-->
 
 		</div>
 		<!--content-->
@@ -91,40 +139,110 @@ String basePath = request.getScheme() + "://"
 	<script src="/plugins/layui/layui.js" charset="utf-8"></script>
 	<script>
         $(function () {
-            layui.use(['laypage', 'layer'], function(){
-                var laypage = layui.laypage
-                    ,layer = layui.layer;
-                //以下将以jquery.ajax为例，演示一个异步分页
-                var pageSize = 5;
-                function paging(curr){
-                    $.ajax({
-                        type: "POST",
-                        url: "/member/product/page.html",
-                        data: {
-                            currentPage :curr || 1,
-                            pageSize : pageSize
-                        },
-                        success: function(data){
-                            $("#dataMsg").html(data);
-                            var totalPages = $("#totalPages").val();
-                            //显示分页
-                            laypage({
-                                cont: 'pager', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
-                                pages: totalPages, //通过后台拿到的总页数
-                                curr: curr || 1, //当前页
-                                groups: 5 ,//连续显示分页数
-                                jump: function(obj, first){ //触发分页后的回调
-                                    if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
-                                        paging(obj.curr);
-                                    }
-                                }
-                            });
-                        }
-                    });
-                };
-                //运行
-                paging();
-            });
+			layui.use(['form', 'layedit', 'laydate','upload'], function(){
+				var form = layui.form()
+						,layer = layui.layer
+						,layedit = layui.layedit
+						,laydate = layui.laydate;
+
+				layedit.set({
+					uploadImage: {
+						url: '/fileUpload/upload.json' //接口url
+						,type: 'post' //默认post
+					}
+				});
+				//创建一个编辑器
+				var editIndex = layedit.build('LAY_demo_editor');
+
+				//自定义验证规则
+				form.verify({
+					title: function(value){
+						if(value.length < 3){
+							return '产品名称至少得5个字符！';
+						}
+					},
+					oneLevel: function(value){
+						if(value.length < 1){
+							return '请选择产品类型！';
+						}
+					}
+					,content: function(value){
+						layedit.sync(editIndex);
+					}
+				});
+
+
+				//监听提交
+				form.on('submit(demo1)', function(data){
+					$.ajax({
+						type: "POST",
+						url: "/member/product/add.json",
+						data: $("#productForm").serialize(),
+						dataType: "json",
+						success: function (data) {
+							if (data) {
+								location.href = "/member/product/toSuccess.html";
+							} else {
+								layer.msg("发布失败！");
+							}
+						}
+					});
+					return false;
+				});
+
+				layui.upload({
+					url: '/fileUpload/upload.json'
+					,elem: '#uploadImg' //指定原始元素，默认直接查找class="layui-upload-file"
+					,method: 'post' //上传接口的http类型
+					,success: function(data){
+						if(data.flag) {
+							var path = data.data.src;
+							LAY_demo_upload.src = path;
+							$("#picture").val(path);
+						}else {
+							layer.alert("图片上传失败！");
+						}
+					}
+				});
+
+				form.on('select', function(data){
+					var oldDom = data.elem;
+					var selectVal = data.value;
+					var classId = $("#classId").val();
+					if(selectVal != classId) {
+						$("#classId").val(selectVal)
+					}else{
+						return;
+					}
+					var level = $(oldDom).attr("id");
+					if(level != "threeLevel") {
+						$.ajax({
+							type: "POST",
+							url: "/category/getSonCategory.json",
+							data: {parentId:selectVal},
+							dataType: "json",
+							async:false,
+							success: function (data) {
+								if (data.flag) {
+									var content = '<option value="">请选择</option>';
+									data.categorys.forEach(function(item,index) {
+										content += '<option value="'+item.id+'">'+item.name+'</option>';
+									});
+									if(level == "oneLevel") {
+										$("#twoLevel").html(content);
+									}else {
+										$("#threeLevel").html(content);
+									}
+									form.render('select');
+								} else {
+									layer.msg("类目加载失败！");
+								}
+							}
+						});
+					}
+				});
+
+			});
         })
 	</script>
 </html>

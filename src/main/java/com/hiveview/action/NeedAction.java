@@ -104,8 +104,16 @@ public class NeedAction extends BaseController{
             mav.getModel().put("twoLevelCategories", twoLevelCategories);
             mav.getModel().put("threeLevelCategories", threeLevelCategories);
         }
+        Integer memberType = super.getMemberType(request);
+        String page;
+        if (memberType == 1) {
+            page = "need/b_need_add";//商家
+            mav.getModel().put("store","hover");
+        } else {
+            page = "need/p_need_add";//个人
+        }
+        mav.setViewName(page);
         mav.getModel().put("oneLevelCategories", oneLevelCategories);
-        mav.setViewName("need/need_add");
         return mav;
     }
 
