@@ -23,7 +23,7 @@
 
         /*幻灯片*/
         /* 本例子css */
-        .slideBox{ width:100%;position:relative;}
+        .slideBox{ width:100%;position:relative;height: 440px;}
         .slideBox:after{content: '';display: block;clear: both;}
         .slideBox .hd{ overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
         .slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
