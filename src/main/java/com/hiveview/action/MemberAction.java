@@ -84,6 +84,14 @@ public class MemberAction extends BaseController{
 		return mav;
 	}
 
+
+    @RequestMapping(value="/store")
+    public ModelAndView memberStore(HttpServletRequest request,ModelAndView mav) {
+        request.setAttribute("store","hover");
+        mav.setViewName("member/store");
+        return mav;
+    }
+
 	@RequestMapping(value="/toMember")
 	public String selectMemberType(HttpServletRequest request) {
 //		Member member = new Member();

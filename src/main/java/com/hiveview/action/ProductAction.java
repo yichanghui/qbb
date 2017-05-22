@@ -44,11 +44,12 @@ public class ProductAction extends BaseController{
 	@RequestMapping(value="/page")
 	public ModelAndView page(HttpServletRequest request, ModelAndView mav) {
 		Member member = new Member();
-		member.setId(super.getMemberId(request));
+        long memberId = super.getMemberId(request);
+        member.setId(memberId);
 		member =  memberService.getMemberInfo(member);
 		Paging paging = super.getPaging(request);
 		Product product = new Product();
-		product.setMemberId(super.getMemberId(request));
+		product.setMemberId(memberId);
 		Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
 		List<Product> products =  productService.getProductPage(product);
 		paging.setTotalPages(page.getPages());

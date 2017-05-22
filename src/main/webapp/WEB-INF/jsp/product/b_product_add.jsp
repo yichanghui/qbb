@@ -35,7 +35,7 @@
             您当前位置：
             <a href="/index.html">企巴巴</a> &gt;&gt;
             <a href="javascript:void(0);" class="defaultCursor">个人中心</a> &gt;&gt;
-            <a href="javascript:void(0);" class="defaultCursor">业务介绍</a>
+            <a href="javascript:void(0);" class="defaultCursor">我的店铺</a>
         </div>
     </div>
     <div class="form">
