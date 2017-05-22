@@ -8,10 +8,10 @@
     <ul>
         <li><p>店铺管理</p><p>store&nbsp;managemengt</p></li>
         <li>
-            <a href="/member/store.html">店铺管理</a>
+            <a href="/member/product/toAdd/0.html">店铺管理</a>
         </li>
         <li>
-            <a href="/member/store.html">产品管理</a>
+            <a href="/member/product/list.html">产品管理</a>
         </li>
         <li>
             <a href="#">成功案例</a>
