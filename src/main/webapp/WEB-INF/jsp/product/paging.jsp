@@ -30,6 +30,9 @@
                         <c:if test="${product.status == 6}">
                             下架
                         </c:if>
+                        <c:if test="${product.status == 7}">
+                            关闭
+                        </c:if>
                     </li>
                     <li> <fmt:formatDate value="${product.updateTime != null ? product.updateTime:product.addTime}"   pattern="yyyy-MM-dd hh:mm:ss" type="date" dateStyle="long" /></li>
                     <li>
