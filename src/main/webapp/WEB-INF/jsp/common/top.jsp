@@ -54,7 +54,7 @@
     <div style="clear: both;"></div>
 </div>
 
-<div class="nav content">
+<div class="nav">
     <div class="content">
         <ul>
             <li class="nav-li1">

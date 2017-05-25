@@ -39,7 +39,7 @@
         .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
         .adviser_mainli li{border: 1px solid #ddd; border-top:none;height: 217px;}
         .li-img{    margin: 26px 56px 26px 30px;            float: left;}
-        .li-img img{width: 165px;}
+        .li-img img{width: 165px;max-height: 165px;}
         .adviser-list-info{float: left;width: 645px;margin-top: 56px;}
         .adviser-list-content{padding-right: 5px;}
         .company{display: inline-block;
