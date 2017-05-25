@@ -26,7 +26,8 @@
         .pro_type{height: 35px;line-height: 35px;margin-bottom: 15px;}
         .pro_type span{border: 1px solid #ddd;padding:5px;}
         .product_left{width: 255px;margin-right:15px;float: left;}
-        .product_right{float: left;width: 910px;}
+        /*.product_right{float: left;width: 910px;}*/
+        .product_right{float: left;}
         .layui-colla-content img{max-width: 880px;}
 
     </style>
@@ -44,7 +45,7 @@
             <div class="pro_img"><img src="${product.picture}"></div>
             <div class="pro_intro">
                 <div class="pro_title">${product.title}</div>
-                <div class="pro_title2">简单介绍商标注册 5000元 一次注册 中间不收取任何费用</div>
+                <div class="pro_title2">${product.summary}</div>
                 <div class="price_content">
                     <div class="pro_price" style="background-color:#75cdf1;width: 800px">
                      <%--   <p>市场价：<s>${product.marketPrice}元</s></p>--%>
@@ -65,7 +66,7 @@
         <div class="product_right">
             <div class="layui-collapse" lay-accordion="">
                 <div class="layui-colla-item">
-                    <h2 class="layui-colla-title" style="width: 1120px">产品简介</h2>
+                    <h2 class="layui-colla-title">产品简介</h2>
                     <div class="layui-colla-content layui-show" >
                         <%--<p>在前端技术快速变革的今天，layui 仍然坚持语义化的组织模式，甚至于模块理念都是采用类AMD组织形式，并非是有意与时代背道而驰。layui 认为以jQuery为核心的开发方式还没有到完全消亡的时候，而早期市面上基于jQuery的UI都普通做得差强人意，所以需要有一个新的UI去重新为这一领域注入活力，并采用一些更科学的架构方式。--%>
                             <%--<br>--%>
