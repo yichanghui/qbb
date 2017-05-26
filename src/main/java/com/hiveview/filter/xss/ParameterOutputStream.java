@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package com.hiveview.filter;
+package com.hiveview.filter.xss;
 
 import javax.servlet.ServletOutputStream;
 import java.io.ByteArrayOutputStream;
