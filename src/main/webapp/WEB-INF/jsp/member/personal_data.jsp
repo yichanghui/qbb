@@ -229,7 +229,7 @@
             });
 
             layui.upload({
-                url: '/fileUpload/upload.json'
+                url: 'http://img-qbb.open580.com/fileUpload/iframeCrossOriginUpload.html'
                 ,elem: '#uploadHeadPortrait' //指定原始元素，默认直接查找class="layui-upload-file"
                 ,method: 'post' //上传接口的http类型
                 ,success: function(data){

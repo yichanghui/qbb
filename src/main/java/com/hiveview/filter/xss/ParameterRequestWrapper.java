@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package com.hiveview.filter;
+package com.hiveview.filter.xss;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
