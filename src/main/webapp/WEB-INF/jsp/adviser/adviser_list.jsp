@@ -37,28 +37,113 @@
             margin-top: 15px;
         }
         .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
-        .adviser_mainli li{border: 1px solid #ddd; border-top:none;height: 217px;}
-        .li-img{    margin: 26px 56px 26px 30px;            float: left;}
-        .li-img img{width: 165px;max-height: 165px;}
-        .adviser-list-info{float: left;width: 645px;margin-top: 56px;}
+        .adviser_mainli li{border: 1px solid #ddd; border-top:none;height: 150px;}
+        /*.li-img{    margin: 26px 56px 26px 30px;            float: left;}*/
+        .li-img {
+            width: 120px;
+            height: 120px;
+            margin: 15px 25px;
+            float: left;
+        }
+        /*.li-img img{width: 165px;max-height: 165px;}*/
+        .li-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            /* width: 165px; */
+        }
+        .adviser-list-info {
+            margin: 22px 20px;
+            float: left;
+            width: 350px;
+        }
         .adviser-list-content{padding-right: 5px;}
         .company{display: inline-block;
             vertical-align: bottom;
             font-size: 24px;
-            color:#2486b7;
+            color:#333;
             font-weight: 700;}
+        .company2 {
+            display: inline-block;
+            padding: 3px;
+            border: 1px solid #2486b7;
+            color: #2486b7;
+            border-radius: 25px;
+            height: 12px;
+            line-height: 12px;
+            width: 70px;
+            text-align: center;
+        }
         .adviser-list-info p{line-height: 35px;min-height: 35px;font-size: 12px;color: #666;overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;}
         .adviser-list-href{float: right;
             margin-right: 92px;}
-        .adviser-list-href a{border: 2px solid #2486b7;
-            width: 144px;height: 46px;
-            line-height: 46px;
+        /*.adviser-list-href a{border: 2px solid #2486b7;*/
+            /*width: 144px;height: 46px;*/
+            /*line-height: 46px;*/
+            /*text-align: center;*/
+            /*display: inline-block;*/
+            /*color: #2486b7;*/
+            /*margin-top: 80px;}*/
+        .zixun {
+            padding: 45px 0;
+            margin-left: 75px;
+            float: left;
+            width: 150px;
+            text-align: center;
+        }
+        .zixun .xing {
+            display: inline-block;
+            height: 12px;
+            height: 12px;
+        }
+        .zixun .xing img {
+            width: 12px;
+            height: 12px;
+        }
+        .zixun label {
+            color: #fa4f4f;
+            font-size: 20px;
+            position: relative;
+            top: 5px;
+        }
+        .adviser-list-href {
+            float: left;
+            margin-left: 120px;
+        }
+        .counselor-opt {
+            padding: 25px 0;
+        }
+        .counselor-opt>label {
+            font-size: 20px;
+            color: #333;
+            background: url(/images/icon/phone_07.png) left center no-repeat;
+            padding-left: 18px;
+        }
+        .adviser-list-href .btn {
+            margin-top: 15px;
+        }
+        .adviser-list-href a:nth-of-type(1) {
+            border: 1px solid #2486b7;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
             text-align: center;
             display: inline-block;
             color: #2486b7;
-            margin-top: 80px;}
+            border-radius: 3px;
+        }
+        .adviser-list-href a:nth-of-type(2) {
+            border: 1px solid #DEDEDE;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            display: inline-block;
+            color: #2486b7;
+            border-radius: 3px;
+        }
         .adviser_right_tj{width:90px;height:90px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
         .adviser_right_tj img{width:90px;}
         .adviser_right_tjperson{float:left;height: 90px;line-height: 90px;}

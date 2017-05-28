@@ -115,9 +115,9 @@
 			<div class="nav_a">
 				<ul>
 					<li><a href="javascript:void(0)">全部商机</a></li>
-					<%--<li><a href="">同业商机</a></li>--%>
-					<%--<li><a href="">向我申请</a></li>--%>
-					<%--<li><a href="">向我提问</a></li>--%>
+					<li><a href="">同业商机</a></li>
+					<li><a href="">向我申请</a></li>
+					<li><a href="">向我提问</a></li>
 					<li><button id="addNeed">发布需求</button></li>
 					<div class="clear"></div>
 				</ul>
