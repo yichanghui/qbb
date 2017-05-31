@@ -30,8 +30,8 @@ import java.util.Map;
 public class FileUploadAction {
 	Logger logger = Logger.getLogger(FileUploadAction.class);
 
-	private static final String IMG_DOMAIN = "http://img-qbb.open580.com/";
-	private static final String MASTER_DOMAIN = "http://qbb.open580.com/";
+	private static final String IMG_DOMAIN = "http://image.qibaba.cn/";
+	private static final String MASTER_DOMAIN = "http://www.qibaba.cn/";
 
 	/**
 	 * 异步上传
