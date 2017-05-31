@@ -12,8 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import utils.MemberType;
+import utils.StatusUtil;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -94,23 +97,23 @@ public class MemberAction extends BaseController{
 
 	@RequestMapping(value="/toMember")
 	public String selectMemberType(HttpServletRequest request) {
-//		Member member = new Member();
-//		member.setId(super.getMemberId(request));
-//		Object type = request.getParameter("type");
-//		if(null!=type&&type.equals("adviser")){
-//			member.setType(1);
-//			member.setStatus(1);
-//		}else{
-//			member.setType(0);
-//			member.setStatus(4);
-//		}
-//		memberService.updateMember(member);
-//		//更新session里面的值
-//		HttpSession session = request.getSession();
-//		Member memberSession = (Member) request.getSession().getAttribute("currentUser");
-//		memberSession.setType(member.getType());
-//		session.setAttribute("currentUser", memberSession);
-		return "member/member_info";
+		Member member = new Member();
+		member.setId(super.getMemberId(request));
+		Object type = request.getParameter("type");
+		if(null!=type&&type.equals("adviser")){
+			member.setType(MemberType.ADVISER.getVal());
+			member.setStatus(StatusUtil.VALID.getVal());
+		}else{
+			member.setType(MemberType.GENERAL.getVal());
+			member.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
+		}
+		memberService.updateMember(member);
+		//更新session里面的值
+		HttpSession session = request.getSession();
+		Member memberSession = (Member) session.getAttribute("currentUser");
+		memberSession.setType(member.getType());
+		session.setAttribute("currentUser", memberSession);
+		return "redirect:/member/info.html";
 	}
 
 	/**

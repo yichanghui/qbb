@@ -19,7 +19,7 @@
 	<body>
 		<div class="content">
 			<div class="logo-box">
-				<a href="http://qbb.open580.com/product/toSearch.html"><img src="images/logo_h.png"></a>
+				<a href="index.html"><img src="images/logo_h.png"></a>
 			</div>
 			<div class="box_list">
 				<ul>

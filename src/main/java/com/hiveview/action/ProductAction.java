@@ -68,6 +68,7 @@ public class ProductAction extends BaseController{
 		long memberId = super.getMemberId(request);
 		if (memberId > 0  && product.getStatus() != null) {
 			try {
+				product.setUpdateTime(new Date());
 				product.setMemberId(memberId);
 				productService.updateProduct(product);
 				flag = true;

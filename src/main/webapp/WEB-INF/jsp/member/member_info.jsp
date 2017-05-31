@@ -211,7 +211,10 @@
                     dataType: "json",
                     success: function(data){
                         if(data.flag) {
-                            layer.alert("保存成功！");
+                            layer.msg("保存成功！");
+                            setTimeout(function () {
+                                location.href = "/member/info.html";
+                            },500);
                         }else {
                             layer.alert("保存失败！");
                         }
