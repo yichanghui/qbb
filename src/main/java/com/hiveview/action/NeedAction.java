@@ -130,13 +130,13 @@ public class NeedAction extends BaseController{
                 need.setCompanyId(companyId);
             }
             need.setStatus(StatusUtil.CHECKING.getVal());
+            need.setMemberType(member.getType());
             if (need.getId() != null) {
                 need.setUpdateTime(new Date());
                 needService.updateNeed(need);
                 needService.deleteAttributeByNeedId(need.getId());
             } else {
                 need.setAddTime(new Date());
-                need.setMemberType(member.getType());
                 needService.saveNeed(need);
             }
             List<Attribute> attributes = need.getAttributes();
